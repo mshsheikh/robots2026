@@ -1,0 +1,42 @@
+{
+  "pluginId": "default",
+  "version": "current",
+  "label": "Next",
+  "banner": null,
+  "badge": false,
+  "noIndex": false,
+  "className": "docs-version-current",
+  "isLast": true,
+  "docsSidebars": {
+    "tutorialSidebar": [
+      {
+        "type": "link",
+        "label": "Introduction to Physical AI & Humanoid Robotics",
+        "href": "/ai-humanoid-robotics/docs/intro",
+        "docId": "intro",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Week 1: ROS 2 Fundamentals",
+        "href": "/ai-humanoid-robotics/docs/week1-ros2-basics",
+        "docId": "week1-ros2-basics",
+        "unlisted": false
+      }
+    ]
+  },
+  "docs": {
+    "intro": {
+      "id": "intro",
+      "title": "Introduction to Physical AI & Humanoid Robotics",
+      "description": "Welcome to the comprehensive course on Physical AI & Humanoid Robotics. This educational journey explores the fascinating intersection of artificial intelligence and robotics, focusing specifically on humanoid systems that interact with the physical world.",
+      "sidebar": "tutorialSidebar"
+    },
+    "week1-ros2-basics": {
+      "id": "week1-ros2-basics",
+      "title": "Week 1: ROS 2 Fundamentals",
+      "description": "Introduction to Robot Operating System 2",
+      "sidebar": "tutorialSidebar"
+    }
+  }
+}

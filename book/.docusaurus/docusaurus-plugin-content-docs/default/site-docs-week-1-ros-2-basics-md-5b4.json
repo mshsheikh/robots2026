@@ -1,0 +1,23 @@
+{
+  "id": "week1-ros2-basics",
+  "title": "Week 1: ROS 2 Fundamentals",
+  "description": "Introduction to Robot Operating System 2",
+  "source": "@site/docs/week1-ros2-basics.md",
+  "sourceDirName": ".",
+  "slug": "/week1-ros2-basics",
+  "permalink": "/ai-humanoid-robotics/docs/week1-ros2-basics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mshsheikh/ai-humanoid-robotics/tree/master/docs/week1-ros2-basics.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Introduction to Physical AI & Humanoid Robotics",
+    "permalink": "/ai-humanoid-robotics/docs/intro"
+  }
+}

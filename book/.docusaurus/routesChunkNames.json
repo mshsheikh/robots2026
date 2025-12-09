@@ -1,0 +1,66 @@
+{
+  "/ai-humanoid-robotics/__docusaurus/debug-acd": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---ai-humanoid-robotics-docusaurus-debugee-1-470"
+    }
+  },
+  "/ai-humanoid-robotics/__docusaurus/debug/config-81b": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---ai-humanoid-robotics-docusaurus-debugee-1-470"
+    }
+  },
+  "/ai-humanoid-robotics/__docusaurus/debug/content-b77": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---ai-humanoid-robotics-docusaurus-debugee-1-470"
+    },
+    "allContent": "allContent---ai-humanoid-robotics-docusaurus-debug-content-246-546"
+  },
+  "/ai-humanoid-robotics/__docusaurus/debug/globalData-204": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---ai-humanoid-robotics-docusaurus-debugee-1-470"
+    }
+  },
+  "/ai-humanoid-robotics/__docusaurus/debug/metadata-a0d": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---ai-humanoid-robotics-docusaurus-debugee-1-470"
+    }
+  },
+  "/ai-humanoid-robotics/__docusaurus/debug/registry-9ab": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---ai-humanoid-robotics-docusaurus-debugee-1-470"
+    }
+  },
+  "/ai-humanoid-robotics/__docusaurus/debug/routes-63b": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---ai-humanoid-robotics-docusaurus-debugee-1-470"
+    }
+  },
+  "/ai-humanoid-robotics/docs-927": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---ai-humanoid-robotics-docs-4-c-5-07f"
+    }
+  },
+  "/ai-humanoid-robotics/docs-47b": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "version": "version---ai-humanoid-robotics-docs-935-60b"
+  },
+  "/ai-humanoid-robotics/docs-e39": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/ai-humanoid-robotics/docs/intro-14c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-docs-intro-0-e-3-795"
+  },
+  "/ai-humanoid-robotics/docs/week1-ros2-basics-cb4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-docs-week-1-ros-2-basics-5-b-4-e71"
+  }
+}

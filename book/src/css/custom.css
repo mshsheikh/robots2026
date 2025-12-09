@@ -1,0 +1,3 @@
+/* minimal custom.css for Docusaurus */
+:root{--ifm-color-primary: #0b5cff}
+body{font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}

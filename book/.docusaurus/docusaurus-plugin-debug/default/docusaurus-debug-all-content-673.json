@@ -1,0 +1,93 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "loadedVersions": [
+        {
+          "versionName": "current",
+          "label": "Next",
+          "banner": null,
+          "badge": false,
+          "noIndex": false,
+          "className": "docs-version-current",
+          "path": "/ai-humanoid-robotics/docs",
+          "tagsPath": "/ai-humanoid-robotics/docs/tags",
+          "editUrl": "https://github.com/mshsheikh/ai-humanoid-robotics/tree/master/docs",
+          "editUrlLocalized": "https://github.com/mshsheikh/ai-humanoid-robotics/tree/master/i18n/en/docusaurus-plugin-content-docs/current",
+          "isLast": true,
+          "routePriority": -1,
+          "sidebarFilePath": "/mnt/e/ai-humanoid-robotics/robots2026/book/sidebars.js",
+          "contentPath": "/mnt/e/ai-humanoid-robotics/robots2026/book/docs",
+          "contentPathLocalized": "/mnt/e/ai-humanoid-robotics/robots2026/book/i18n/en/docusaurus-plugin-content-docs/current",
+          "docs": [
+            {
+              "id": "intro",
+              "title": "Introduction to Physical AI & Humanoid Robotics",
+              "description": "Welcome to the comprehensive course on Physical AI & Humanoid Robotics. This educational journey explores the fascinating intersection of artificial intelligence and robotics, focusing specifically on humanoid systems that interact with the physical world.",
+              "source": "@site/docs/intro.md",
+              "sourceDirName": ".",
+              "slug": "/intro",
+              "permalink": "/ai-humanoid-robotics/docs/intro",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/mshsheikh/ai-humanoid-robotics/tree/master/docs/intro.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "next": {
+                "title": "Week 1: ROS 2 Fundamentals",
+                "permalink": "/ai-humanoid-robotics/docs/week1-ros2-basics"
+              }
+            },
+            {
+              "id": "week1-ros2-basics",
+              "title": "Week 1: ROS 2 Fundamentals",
+              "description": "Introduction to Robot Operating System 2",
+              "source": "@site/docs/week1-ros2-basics.md",
+              "sourceDirName": ".",
+              "slug": "/week1-ros2-basics",
+              "permalink": "/ai-humanoid-robotics/docs/week1-ros2-basics",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/mshsheikh/ai-humanoid-robotics/tree/master/docs/week1-ros2-basics.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Introduction to Physical AI & Humanoid Robotics",
+                "permalink": "/ai-humanoid-robotics/docs/intro"
+              }
+            }
+          ],
+          "drafts": [],
+          "sidebars": {
+            "tutorialSidebar": [
+              {
+                "type": "doc",
+                "id": "intro"
+              },
+              {
+                "type": "doc",
+                "id": "week1-ros2-basics"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "docusaurus-plugin-content-pages": {
+    "default": null
+  },
+  "docusaurus-plugin-debug": {},
+  "docusaurus-theme-classic": {},
+  "docusaurus-bootstrap-plugin": {},
+  "docusaurus-mdx-fallback-plugin": {}
+}

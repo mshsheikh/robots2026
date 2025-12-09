@@ -1,0 +1,23 @@
+{
+  "id": "intro",
+  "title": "Introduction to Physical AI & Humanoid Robotics",
+  "description": "Welcome to the comprehensive course on Physical AI & Humanoid Robotics. This educational journey explores the fascinating intersection of artificial intelligence and robotics, focusing specifically on humanoid systems that interact with the physical world.",
+  "source": "@site/docs/intro.md",
+  "sourceDirName": ".",
+  "slug": "/intro",
+  "permalink": "/ai-humanoid-robotics/docs/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mshsheikh/ai-humanoid-robotics/tree/master/docs/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Week 1: ROS 2 Fundamentals",
+    "permalink": "/ai-humanoid-robotics/docs/week1-ros2-basics"
+  }
+}
