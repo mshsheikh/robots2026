@@ -1,58 +1,44 @@
 <!--
 Sync Impact Report:
-Version change: [CONSTITUTION_VERSION] -> 1.0.0
+Version change: 1.0.0 -> 1.1.0
 Modified principles:
-- [PRINCIPLE_1_NAME] -> Deliver Working Product
-- [PRINCIPLE_2_NAME] -> Token-Efficient Generation
-- [PRINCIPLE_3_NAME] -> Reproducible Spec-Driven Pipeline
-- [PRINCIPLE_4_NAME] -> Minimal, Testable Scaffolds
-- [PRINCIPLE_5_NAME] -> Documented Artifact Paths
+- Added Small, Token-Efficient Prompts
+- Added Spec-Driven Pipeline
+- Added Preserve History
+- Added Use Feature Branches
+- Added Avoid Committing Local Venv
 Added sections: None
-Removed sections: None
+Removed sections: Deliver Working Product, Token-Efficient Generation, Reproducible Spec-Driven Pipeline, Minimal, Testable Scaffolds, Documented Artifact Paths
 Templates requiring updates:
-- .specify/templates/plan-template.md: ✅ updated
-- .specify/templates/spec-template.md: ✅ updated
-- .specify/templates/tasks-template.md: ✅ updated
-- .specify/templates/commands/*.md: ✅ updated
-Follow-up TODOs: TODO(GOVERNANCE_RULES): Define governance rules
+- .specify/templates/plan-template.md: ⚠ pending
+- .specify/templates/spec-template.md: ⚠ pending
+- .specify/templates/tasks-template.md: ⚠ pending
+- .specify/templates/commands/*.md: ⚠ pending
+Follow-up TODOs: None
 -->
+
 # Physical AI & Humanoid Robotics Course Constitution
 
 ## Core Principles
 
-### Deliver Working Product
-Deliver a working Docusaurus book + embedded RAG by 2025-12-07T23:59+05:00
+### Small, Token-Efficient Prompts
+Use small, token-efficient prompts and outputs to maintain efficiency and reduce costs.
 
-### Token-Efficient Generation
-Sections ~180 words for token efficiency.
+### Spec-Driven Pipeline
+Follow spec-driven pipeline: spec → plan → tasks → implement → phr for all development work.
 
-### Reproducible Spec-Driven Pipeline
-Maintain a reproducible spec-driven pipeline (spec → plan → tasks → implement).
+### Preserve History
+Preserve all history under history/prompts to maintain complete project traceability.
 
-### Minimal, Testable Scaffolds
-Prefer minimal, testable scaffolds over large feature bloat.
+### Use Feature Branches
+Use feature branches for implementation to maintain clean main branch and enable parallel development.
 
-### Documented Artifact Paths
-Keep artifacts under documented paths (spec/, book/, rag/).
-
-### [PRINCIPLE_6_NAME]
-
-
-
-[PRINCIPLE__DESCRIPTION]
-
-## [SECTION_2_NAME]
-
-[SECTION_2_CONTENT]
-
-## [SECTION_3_NAME]
-
-[SECTION_3_CONTENT]
+### Avoid Committing Local Venv
+Avoid committing local venv; use requirements.txt instead to ensure reproducible environments.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+Constitution supersedes all other practices; Amendments require documentation, approval, migration plan when applicable.
 
-TODO(GOVERNANCE_RULES): Define governance rules
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+All PRs/reviews must verify compliance with these principles; Complexity must be justified with clear benefits.
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-08 | **Last Amended**: 2025-12-08
+**Version**: 1.1.0 | **Ratified**: 2025-12-08 | **Last Amended**: 2025-12-10

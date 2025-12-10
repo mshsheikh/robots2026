@@ -1,35 +1,35 @@
 # Implementation Plan: Physical AI & Humanoid Robotics Course
 
-**Branch**: `001-docusaurus-robotics` | **Date**: 2025-12-08 | **Spec**: [specs/001-docusaurus-robotics/spec.md](specs/001-docusaurus-robotics/spec.md)
+**Branch**: `001-docusaurus-robotics` | **Date**: 2025-12-10 | **Spec**: specs/001-docusaurus-robotics/spec.md
 **Input**: Feature specification from `/specs/001-docusaurus-robotics/spec.md`
 
 **Note**: This template is filled in by the `/sp.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
 
 ## Summary
 
-Build a Docusaurus-based textbook for Physical AI & Humanoid Robotics course with 13 weekly chapters (each with 3 sections of ~180 words), integrated RAG chatbot using FastAPI and Qdrant, and deployment to GitHub Pages.
+Development of a Docusaurus-based textbook for Physical AI & Humanoid Robotics with integrated RAG chatbot. The system includes 13 weekly chapters (3 sections each ~180 words), FastAPI backend, Qdrant vector database, and GitHub Pages deployment.
 
 ## Technical Context
 
-**Language/Version**: Python 3.11, Node.js 18+
-**Primary Dependencies**: Docusaurus, FastAPI, Qdrant, Claude Code
-**Storage**: GitHub Pages (static), Qdrant vector database
+**Language/Version**: Python 3.12, TypeScript/JavaScript for frontend
+**Primary Dependencies**: Docusaurus, FastAPI, Qdrant Client, uvicorn, React
+**Storage**: Qdrant vector database for RAG, GitHub Pages for static content
 **Testing**: pytest for backend, Jest for frontend
-**Target Platform**: Web (GitHub Pages + FastAPI server)
+**Target Platform**: Web application (Linux server backend, browser frontend)
 **Project Type**: Web application (frontend + backend)
-**Performance Goals**: <3s response time for RAG queries, <2s page load times
-**Constraints**: <200ms p95 for API responses, Claude Code integration for content generation
-**Scale/Scope**: 1000 concurrent users, 52 course sections (~9,360 words total content)
+**Performance Goals**: <3 second response time for RAG queries, 99% GitHub Pages uptime
+**Constraints**: <200ms p95 for API responses, token-efficient generation, selected-text-only chat mode
+**Scale/Scope**: Educational content for course students, 52 sections (~9,360 words total)
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- ✅ Deliver Working Product: Plan delivers working Docusaurus book + embedded RAG by deadline
-- ✅ Token-Efficient Generation: Sections ~180 words for token efficiency
-- ✅ Reproducible Spec-Driven Pipeline: Maintains spec → plan → tasks → implement flow
-- ✅ Minimal, Testable Scaffolds: Plan focuses on minimal viable implementation
-- ✅ Documented Artifact Paths: Artifacts under documented paths (book/, rag/)
+- ✅ Small, Token-Efficient Prompts: Following token-efficiency constraints from spec
+- ✅ Spec-Driven Pipeline: Following spec → plan → tasks → implement → phr workflow
+- ✅ Preserve History: All changes preserved under history/prompts
+- ✅ Use Feature Branches: Using 001-docusaurus-robotics branch
+- ✅ Avoid Committing Local Venv: Will use requirements.txt instead of committing venv
 
 ## Project Structure
 
@@ -47,30 +47,27 @@ specs/001-docusaurus-robotics/
 
 ### Source Code (repository root)
 
-```text
-book/
-├── docs/                # Course content (13 weeks, 3 sections each)
-│   ├── week1/
-│   ├── week2/
-│   └── ...
-│   └── week13/
-├── src/
-│   └── components/      # Custom Docusaurus components
-├── docusaurus.config.js
-└── package.json
+backend/
+├── rag/
+│   ├── fastapi/
+│   │   └── main.py
+│   └── qdrant/
+│       └── ingest.py
+├── scripts/
+│   └── deploy_github_pages.sh
+└── requirements.txt
 
-rag/
-├── fastapi/
-│   ├── main.py          # FastAPI RAG endpoint
-│   └── models.py        # Data models
-├── qdrant/
-│   └── ingest.py        # Content ingestion script
-└── client/
-    └── chat-widget.js   # Client-side chat widget
-
-specs/
-└── 001-docusaurus-robotics/  # This feature's specs
-```
+frontend/
+├── book/                # Docusaurus textbook site
+│   ├── docs/
+│   │   ├── intro.md
+│   │   └── week1-ros2-basics.md
+│   ├── src/
+│   │   ├── components/
+│   │   └── css/
+│   ├── static/
+│   └── docusaurus.config.js
+└── code-to-humanoid/    # Existing Docusaurus site
 
 ## Complexity Tracking
 
@@ -78,15 +75,15 @@ specs/
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
 |-----------|------------|-------------------------------------|
-| [N/A] | [N/A] | [N/A] |
+| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
+| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
 
-## 6-Week Milestone Plan
+## Milestones
 
 milestone | due | est_hours | notes
----|---|---|---
-Docusaurus site setup and basic structure | Week 1 | 16 | Set up Docusaurus, basic navigation, theme configuration
-Course content generation (13 weeks x 3 sections) | Week 2-3 | 40 | Generate 52 sections (~180 words each) using Claude Code
-RAG backend (FastAPI + Qdrant integration) | Week 3-4 | 32 | Implement FastAPI endpoints, Qdrant vector storage, content ingestion
-Client-side chat widget with selected-text mode | Week 4 | 24 | Create chat interface that works with selected text from course content
-Integration and testing | Week 5 | 24 | Connect frontend to RAG backend, implement end-to-end functionality
-Deployment to GitHub Pages | Week 6 | 8 | Configure GitHub Actions, deploy site with RAG endpoint
+Scaffold Docusaurus site | 2025-12-01 | 4 | Basic Docusaurus setup with GitHub Pages config
+Create textbook content | 2025-12-03 | 16 | 13 weeks × 3 sections (~180w each)
+Implement RAG backend | 2025-12-05 | 12 | FastAPI /ask endpoint with Qdrant integration
+Build content ingestion | 2025-12-06 | 8 | Qdrant ingest pipeline for textbook content
+Add client chat widget | 2025-12-07 | 10 | Selected-text-only mode widget
+Deploy and test system | 2025-12-07 | 6 | Full integration and deployment to GitHub Pages

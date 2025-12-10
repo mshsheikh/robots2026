@@ -3,7 +3,10 @@
     "allow": [
       "Bash(.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks)",
       "Bash(pip3 --version)",
-      "Bash(pip --version)"
+      "Bash(pip --version)",
+      "Bash(git fetch --all --prune)",
+      "Bash(mkdir -p /mnt/e/ai-humanoid-robotics/robots2026/specs/001-docusaurus-robotics/checklists)",
+      "Bash(.specify/scripts/bash/setup-plan.sh --json)"
     ],
     "deny": [],
     "ask": []
