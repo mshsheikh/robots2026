@@ -1,6 +1,0 @@
-rag-env/
-__pycache__/
-*.pyc
-node_modules/
-.docusaurus/
-book/build/

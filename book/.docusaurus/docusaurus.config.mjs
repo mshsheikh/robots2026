@@ -6,7 +6,7 @@
 export default {
   "title": "Physical AI & Humanoid Robotics",
   "tagline": "A comprehensive course on Physical AI and Humanoid Robotics",
-  "favicon": "img/favicon.ico",
+  "favicon": "/img/favicon.ico",
   "url": "https://mshsheikh.github.io",
   "baseUrl": "/ai-humanoid-robotics/",
   "organizationName": "mshsheikh",
@@ -42,7 +42,7 @@ export default {
       "title": "Physical AI & Humanoid Robotics",
       "logo": {
         "alt": "Physical AI & Humanoid Robotics Logo",
-        "src": "img/logo.svg"
+        "src": "/img/logo.svg"
       },
       "items": [
         {
