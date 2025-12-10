@@ -6,7 +6,8 @@
       "Bash(pip --version)",
       "Bash(git fetch --all --prune)",
       "Bash(mkdir -p /mnt/e/ai-humanoid-robotics/robots2026/specs/001-docusaurus-robotics/checklists)",
-      "Bash(.specify/scripts/bash/setup-plan.sh --json)"
+      "Bash(.specify/scripts/bash/setup-plan.sh --json)",
+      "Bash(find /mnt/e/ai-humanoid-robotics/robots2026 -name \"*.py\" -exec grep -l \"import\\|from\" {})"
     ],
     "deny": [],
     "ask": []
