@@ -22,6 +22,90 @@
         "href": "/ai-humanoid-robotics/docs/week1-ros2-basics",
         "docId": "week1-ros2-basics",
         "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Week 2: Motion Planning Fundamentals",
+        "href": "/ai-humanoid-robotics/docs/week2-motion-planning",
+        "docId": "week2-motion-planning",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Week 3: Perception Systems for Humanoid Robots",
+        "href": "/ai-humanoid-robotics/docs/week3-perception-systems",
+        "docId": "week3-perception-systems",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Week 4: Control Theory for Humanoid Systems",
+        "href": "/ai-humanoid-robotics/docs/week4-control-theory",
+        "docId": "week4-control-theory",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Week 5: Bipedal Locomotion Principles",
+        "href": "/ai-humanoid-robotics/docs/week5-bipedal-locomotion",
+        "docId": "week5-bipedal-locomotion",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Week 6: Manipulation and Grasping",
+        "href": "/ai-humanoid-robotics/docs/week6-manipulation-knowledge",
+        "docId": "week6-manipulation-knowledge",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Week 7: Humanoid Robot Hardware Design",
+        "href": "/ai-humanoid-robotics/docs/week7-humanoid-hardware",
+        "docId": "week7-humanoid-hardware",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Week 8: AI Integration in Humanoid Systems",
+        "href": "/ai-humanoid-robotics/docs/week8-ai-integration",
+        "docId": "week8-ai-integration",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Week 9: Human-Robot Interaction",
+        "href": "/ai-humanoid-robotics/docs/week9-human-robot-interaction",
+        "docId": "week9-human-robot-interaction",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Week 10: Ethics and Safety in Robotics",
+        "href": "/ai-humanoid-robotics/docs/week10-ethics-robotics",
+        "docId": "week10-ethics-robotics",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Week 11: Applications and Domains",
+        "href": "/ai-humanoid-robotics/docs/week11-applications-domains",
+        "docId": "week11-applications-domains",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Week 12: Future Directions in Robotics",
+        "href": "/ai-humanoid-robotics/docs/week12-future-robotics",
+        "docId": "week12-future-robotics",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Week 13: Course Conclusion and Next Steps",
+        "href": "/ai-humanoid-robotics/docs/week13-conclusion",
+        "docId": "week13-conclusion",
+        "unlisted": false
       }
     ]
   },
@@ -36,6 +120,78 @@
       "id": "week1-ros2-basics",
       "title": "Week 1: ROS 2 Fundamentals",
       "description": "Introduction to Robot Operating System 2",
+      "sidebar": "tutorialSidebar"
+    },
+    "week10-ethics-robotics": {
+      "id": "week10-ethics-robotics",
+      "title": "Week 10: Ethics and Safety in Robotics",
+      "description": "Introduction to Robot Ethics",
+      "sidebar": "tutorialSidebar"
+    },
+    "week11-applications-domains": {
+      "id": "week11-applications-domains",
+      "title": "Week 11: Applications and Domains",
+      "description": "Introduction to Real-World Applications",
+      "sidebar": "tutorialSidebar"
+    },
+    "week12-future-robotics": {
+      "id": "week12-future-robotics",
+      "title": "Week 12: Future Directions in Robotics",
+      "description": "Introduction to Emerging Trends",
+      "sidebar": "tutorialSidebar"
+    },
+    "week13-conclusion": {
+      "id": "week13-conclusion",
+      "title": "Week 13: Course Conclusion and Next Steps",
+      "description": "Synthesis of Knowledge",
+      "sidebar": "tutorialSidebar"
+    },
+    "week2-motion-planning": {
+      "id": "week2-motion-planning",
+      "title": "Week 2: Motion Planning Fundamentals",
+      "description": "Introduction to Motion Planning",
+      "sidebar": "tutorialSidebar"
+    },
+    "week3-perception-systems": {
+      "id": "week3-perception-systems",
+      "title": "Week 3: Perception Systems for Humanoid Robots",
+      "description": "Introduction to Robot Perception",
+      "sidebar": "tutorialSidebar"
+    },
+    "week4-control-theory": {
+      "id": "week4-control-theory",
+      "title": "Week 4: Control Theory for Humanoid Systems",
+      "description": "Introduction to Robot Control",
+      "sidebar": "tutorialSidebar"
+    },
+    "week5-bipedal-locomotion": {
+      "id": "week5-bipedal-locomotion",
+      "title": "Week 5: Bipedal Locomotion Principles",
+      "description": "Introduction to Humanoid Walking",
+      "sidebar": "tutorialSidebar"
+    },
+    "week6-manipulation-knowledge": {
+      "id": "week6-manipulation-knowledge",
+      "title": "Week 6: Manipulation and Grasping",
+      "description": "Introduction to Robotic Manipulation",
+      "sidebar": "tutorialSidebar"
+    },
+    "week7-humanoid-hardware": {
+      "id": "week7-humanoid-hardware",
+      "title": "Week 7: Humanoid Robot Hardware Design",
+      "description": "Introduction to Hardware Design",
+      "sidebar": "tutorialSidebar"
+    },
+    "week8-ai-integration": {
+      "id": "week8-ai-integration",
+      "title": "Week 8: AI Integration in Humanoid Systems",
+      "description": "Introduction to AI for Humanoid Robots",
+      "sidebar": "tutorialSidebar"
+    },
+    "week9-human-robot-interaction": {
+      "id": "week9-human-robot-interaction",
+      "title": "Week 9: Human-Robot Interaction",
+      "description": "Introduction to Social Robotics",
       "sidebar": "tutorialSidebar"
     }
   }

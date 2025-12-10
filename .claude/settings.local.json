@@ -1,20 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks)",
-      "Bash(pip3 --version)",
-      "Bash(pip --version)",
-      "Bash(git fetch --all --prune)",
-      "Bash(mkdir -p /mnt/e/ai-humanoid-robotics/robots2026/specs/001-docusaurus-robotics/checklists)",
-      "Bash(.specify/scripts/bash/setup-plan.sh --json)",
-      "Bash(find /mnt/e/ai-humanoid-robotics/robots2026 -name \"*.py\" -exec grep -l \"import\\|from\" {})",
-      "Bash(grep -n \"\\[.*\\](.*)\\|!\\[.*\\](.*)\" /mnt/e/ai-humanoid-robotics/robots2026/book/docs/*.md)",
-      "Bash(npm run build)",
-      "Bash(npx docusaurus build --out-dir build-test)",
+      "Bash(mkdir -p /mnt/e/ai-humanoid-robotics/robots2026/book/src/pages)",
+      "Bash(git checkout -b 001-fix-docusaurus-links)",
+      "Bash(git checkout 001-fix-docusaurus-links)",
+      "Bash(mkdir -p /mnt/e/ai-humanoid-robotics/robots2026/history/prompts/001-docusaurus-robotics)",
+      "Bash(npm ci)",
+      "Bash(npm install)",
       "Bash(npx docusaurus build)",
-      "Bash(npx docusaurus start --no-open)",
-      "Bash(timeout 60 npx docusaurus build)",
-      "Bash(npm run build -- --verbose)"
+      "Bash(npm run build)",
+      "Bash(npx docusaurus build --verbose)"
     ],
     "deny": [],
     "ask": []
