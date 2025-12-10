@@ -5,4 +5,4 @@ id | title | est_hours | assignee | dependency
 4 | scaffold rag/fastapi/main.py | 2 | unassigned | 1 [X]
 5 | scaffold rag/qdrant/ingest.py | 1.5 | unassigned | 1 [X]
 6 | add deploy script scripts/deploy_github_pages.sh | 1 | unassigned | 1 [X]
-7 | create demo video script (45 words) | 0.5 | unassigned | 2,4,5
+7 | create requirements.txt | 0.25 | unassigned | 1 [X]
