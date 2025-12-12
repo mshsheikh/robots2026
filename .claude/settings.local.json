@@ -9,7 +9,10 @@
       "Bash(npm install)",
       "Bash(npx docusaurus build)",
       "Bash(npm run build)",
-      "Bash(npx docusaurus build --verbose)"
+      "Bash(npx docusaurus build --verbose)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nci: enable GitHub Pages automatic deployment\n\n- Updated baseUrl to /robots2026/ to match repository name\n- Updated projectName to robots2026 for correct GitHub Pages deployment\n- Created GitHub Actions workflow for automatic deployment to GitHub Pages\n- Added PHR documenting the deployment setup\n\nThe workflow will automatically build and deploy the Docusaurus site\nto GitHub Pages on pushes to main/master branches.\n\nFiles modified:\n- book/docusaurus.config.js\n- .github/workflows/deploy-docusaurus.yml\n- history/prompts/001-docusaurus-robotics/003-deploy-docusaurus-setup.phr.md\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"ci: enable GitHub Pages automatic deployment\n\n- Updated baseUrl to /robots2026/ to match repository name\n- Updated projectName to robots2026 for correct GitHub Pages deployment\n- Created GitHub Actions workflow for automatic deployment to GitHub Pages\n- Added PHR documenting the deployment setup\n\nThe workflow will automatically build and deploy the Docusaurus site\nto GitHub Pages on pushes to main/master branches.\n\nFiles modified:\n- book/docusaurus.config.js\n- .github/workflows/deploy-docusaurus.yml\n- history/prompts/001-docusaurus-robotics/003-deploy-docusaurus-setup.phr.md\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\")",
+      "Bash(git push origin main)"
     ],
     "deny": [],
     "ask": []
