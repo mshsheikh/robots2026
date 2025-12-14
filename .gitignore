@@ -5,6 +5,7 @@ node_modules/
 .docusaurus/
 book/build/
 .env
+.venv
 *.log
 .DS_Store
 .vscode/
@@ -28,3 +29,4 @@ coverage.xml
 .pyre/
 .pytype/
 .pyright/
+classnotes.txt
