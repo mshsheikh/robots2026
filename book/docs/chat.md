@@ -22,18 +22,16 @@ In the next phase, this chat will be embedded directly here with a live UI.
 
 ## Live Demo (Phase A)
 
-The chat below connects to a local Retrieval-Augmented Generation (RAG) backend.
+⚠️ **Important:**
+This demo requires the backend to be running locally on the same machine
+where the browser is opened.
 
-> **Note for judges:**
-> Start the backend locally (`uvicorn rag.fastapi.main:app --port 8000`)
-> before using this demo.
+> Start the backend with:
+> `uvicorn rag.fastapi.main:app --port 8000`
 
 <iframe
   src="/robots2026/chat/index.html"
   width="100%"
   height="600"
-  style="border:1px solid #1e293b;border-radius:8px;">
-</iframe>
-
-⚠️ This demo requires the backend to be running locally on the same machine
-where the browser is opened.
+  style={{ border: "1px solid #1e293b", borderRadius: "8px" }}
+/>
