@@ -30,7 +30,12 @@
       "Bash(git checkout 002-fix-pages-gh)",
       "Bash(git worktree remove ../gh-pages-temp)",
       "Bash(git add history/prompts/001-docusaurus-robotics/00ZZ-pages-fix-summary.phr.md)",
-      "Bash(git commit -m \"chore(pages): document pages fix verification and workflow status\")"
+      "Bash(git commit -m \"chore(pages): document pages fix verification and workflow status\")",
+      "Bash(git --no-pager log --oneline --decorate -3)",
+      "Bash(git add book/docs/chat.md book/sidebars.js)",
+      "Bash(git push https://mshsheikh:ghp_dBhKeqdlwa-sigCrBXncpSIxAwtXw0XaLpqmdR_glN1wCTZKfU0JWWatrghL0FIGQ@github.com/mshsheikh/robots2026.git main)",
+      "Bash(git remote set-url origin https://mshsheikh:ghp_dBhKeqdlwa-sigCrBXncpSIxAwtXw0XaLpqmdR_glN1wCTZKfU0JWWatrghL0FIGQ@github.com/mshsheikh/robots2026.git)",
+      "Bash(git remote set-url origin https://github.com/mshsheikh/robots2026.git)"
     ],
     "deny": [],
     "ask": []
