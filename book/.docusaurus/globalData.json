@@ -1,83 +1,88 @@
 {
   "docusaurus-plugin-content-docs": {
     "default": {
-      "path": "/ai-humanoid-robotics/docs",
+      "path": "/robots2026/docs",
       "versions": [
         {
           "name": "current",
           "label": "Next",
           "isLast": true,
-          "path": "/ai-humanoid-robotics/docs",
+          "path": "/robots2026/docs",
           "mainDocId": "intro",
           "docs": [
             {
+              "id": "chat",
+              "path": "/robots2026/docs/chat",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "intro",
-              "path": "/ai-humanoid-robotics/docs/intro",
+              "path": "/robots2026/docs/intro",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "week1-ros2-basics",
-              "path": "/ai-humanoid-robotics/docs/week1-ros2-basics",
+              "path": "/robots2026/docs/week1-ros2-basics",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "week10-ethics-robotics",
-              "path": "/ai-humanoid-robotics/docs/week10-ethics-robotics",
+              "path": "/robots2026/docs/week10-ethics-robotics",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "week11-applications-domains",
-              "path": "/ai-humanoid-robotics/docs/week11-applications-domains",
+              "path": "/robots2026/docs/week11-applications-domains",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "week12-future-robotics",
-              "path": "/ai-humanoid-robotics/docs/week12-future-robotics",
+              "path": "/robots2026/docs/week12-future-robotics",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "week13-conclusion",
-              "path": "/ai-humanoid-robotics/docs/week13-conclusion",
+              "path": "/robots2026/docs/week13-conclusion",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "week2-motion-planning",
-              "path": "/ai-humanoid-robotics/docs/week2-motion-planning",
+              "path": "/robots2026/docs/week2-motion-planning",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "week3-perception-systems",
-              "path": "/ai-humanoid-robotics/docs/week3-perception-systems",
+              "path": "/robots2026/docs/week3-perception-systems",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "week4-control-theory",
-              "path": "/ai-humanoid-robotics/docs/week4-control-theory",
+              "path": "/robots2026/docs/week4-control-theory",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "week5-bipedal-locomotion",
-              "path": "/ai-humanoid-robotics/docs/week5-bipedal-locomotion",
+              "path": "/robots2026/docs/week5-bipedal-locomotion",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "week6-manipulation-knowledge",
-              "path": "/ai-humanoid-robotics/docs/week6-manipulation-knowledge",
+              "path": "/robots2026/docs/week6-manipulation-knowledge",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "week7-humanoid-hardware",
-              "path": "/ai-humanoid-robotics/docs/week7-humanoid-hardware",
+              "path": "/robots2026/docs/week7-humanoid-hardware",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "week8-ai-integration",
-              "path": "/ai-humanoid-robotics/docs/week8-ai-integration",
+              "path": "/robots2026/docs/week8-ai-integration",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "week9-human-robot-interaction",
-              "path": "/ai-humanoid-robotics/docs/week9-human-robot-interaction",
+              "path": "/robots2026/docs/week9-human-robot-interaction",
               "sidebar": "tutorialSidebar"
             }
           ],
@@ -85,7 +90,7 @@
           "sidebars": {
             "tutorialSidebar": {
               "link": {
-                "path": "/ai-humanoid-robotics/docs/intro",
+                "path": "/robots2026/docs/intro",
                 "label": "intro"
               }
             }

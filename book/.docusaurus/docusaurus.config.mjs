@@ -8,9 +8,9 @@ export default {
   "tagline": "A comprehensive course on Physical AI and Humanoid Robotics",
   "favicon": "/img/favicon.ico",
   "url": "https://mshsheikh.github.io",
-  "baseUrl": "/ai-humanoid-robotics/",
+  "baseUrl": "/robots2026/",
   "organizationName": "mshsheikh",
-  "projectName": "ai-humanoid-robotics",
+  "projectName": "robots2026",
   "onBrokenLinks": "throw",
   "i18n": {
     "defaultLocale": "en",
@@ -25,12 +25,12 @@ export default {
       "classic",
       {
         "docs": {
-          "sidebarPath": "/mnt/e/ai-humanoid-robotics/robots2026/book/sidebars.js",
+          "sidebarPath": "E:\\ai-humanoid-robotics\\robots2026\\book\\sidebars.js",
           "editUrl": "https://github.com/mshsheikh/ai-humanoid-robotics/tree/master/"
         },
         "blog": false,
         "theme": {
-          "customCss": "/mnt/e/ai-humanoid-robotics/robots2026/book/src/css/custom.css"
+          "customCss": "E:\\ai-humanoid-robotics\\robots2026\\book\\src\\css\\custom.css"
         }
       }
     ]

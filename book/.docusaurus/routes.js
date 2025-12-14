@@ -3,133 +3,139 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/ai-humanoid-robotics/__docusaurus/debug',
-    component: ComponentCreator('/ai-humanoid-robotics/__docusaurus/debug', 'e53'),
+    path: '/robots2026/__docusaurus/debug',
+    component: ComponentCreator('/robots2026/__docusaurus/debug', '13c'),
     exact: true
   },
   {
-    path: '/ai-humanoid-robotics/__docusaurus/debug/config',
-    component: ComponentCreator('/ai-humanoid-robotics/__docusaurus/debug/config', 'ec4'),
+    path: '/robots2026/__docusaurus/debug/config',
+    component: ComponentCreator('/robots2026/__docusaurus/debug/config', 'a39'),
     exact: true
   },
   {
-    path: '/ai-humanoid-robotics/__docusaurus/debug/content',
-    component: ComponentCreator('/ai-humanoid-robotics/__docusaurus/debug/content', 'bdf'),
+    path: '/robots2026/__docusaurus/debug/content',
+    component: ComponentCreator('/robots2026/__docusaurus/debug/content', '76e'),
     exact: true
   },
   {
-    path: '/ai-humanoid-robotics/__docusaurus/debug/globalData',
-    component: ComponentCreator('/ai-humanoid-robotics/__docusaurus/debug/globalData', '230'),
+    path: '/robots2026/__docusaurus/debug/globalData',
+    component: ComponentCreator('/robots2026/__docusaurus/debug/globalData', '6c8'),
     exact: true
   },
   {
-    path: '/ai-humanoid-robotics/__docusaurus/debug/metadata',
-    component: ComponentCreator('/ai-humanoid-robotics/__docusaurus/debug/metadata', '436'),
+    path: '/robots2026/__docusaurus/debug/metadata',
+    component: ComponentCreator('/robots2026/__docusaurus/debug/metadata', '503'),
     exact: true
   },
   {
-    path: '/ai-humanoid-robotics/__docusaurus/debug/registry',
-    component: ComponentCreator('/ai-humanoid-robotics/__docusaurus/debug/registry', 'f6a'),
+    path: '/robots2026/__docusaurus/debug/registry',
+    component: ComponentCreator('/robots2026/__docusaurus/debug/registry', '075'),
     exact: true
   },
   {
-    path: '/ai-humanoid-robotics/__docusaurus/debug/routes',
-    component: ComponentCreator('/ai-humanoid-robotics/__docusaurus/debug/routes', 'ed8'),
+    path: '/robots2026/__docusaurus/debug/routes',
+    component: ComponentCreator('/robots2026/__docusaurus/debug/routes', '888'),
     exact: true
   },
   {
-    path: '/ai-humanoid-robotics/docs',
-    component: ComponentCreator('/ai-humanoid-robotics/docs', 'd7f'),
+    path: '/robots2026/docs',
+    component: ComponentCreator('/robots2026/docs', 'c61'),
     routes: [
       {
-        path: '/ai-humanoid-robotics/docs',
-        component: ComponentCreator('/ai-humanoid-robotics/docs', 'c0e'),
+        path: '/robots2026/docs',
+        component: ComponentCreator('/robots2026/docs', '517'),
         routes: [
           {
-            path: '/ai-humanoid-robotics/docs',
-            component: ComponentCreator('/ai-humanoid-robotics/docs', '6ab'),
+            path: '/robots2026/docs',
+            component: ComponentCreator('/robots2026/docs', '8aa'),
             routes: [
               {
-                path: '/ai-humanoid-robotics/docs/intro',
-                component: ComponentCreator('/ai-humanoid-robotics/docs/intro', 'cde'),
+                path: '/robots2026/docs/chat',
+                component: ComponentCreator('/robots2026/docs/chat', '75b'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/ai-humanoid-robotics/docs/week1-ros2-basics',
-                component: ComponentCreator('/ai-humanoid-robotics/docs/week1-ros2-basics', '8e2'),
+                path: '/robots2026/docs/intro',
+                component: ComponentCreator('/robots2026/docs/intro', 'a0f'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/ai-humanoid-robotics/docs/week10-ethics-robotics',
-                component: ComponentCreator('/ai-humanoid-robotics/docs/week10-ethics-robotics', 'f39'),
+                path: '/robots2026/docs/week1-ros2-basics',
+                component: ComponentCreator('/robots2026/docs/week1-ros2-basics', '2dc'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/ai-humanoid-robotics/docs/week11-applications-domains',
-                component: ComponentCreator('/ai-humanoid-robotics/docs/week11-applications-domains', '769'),
+                path: '/robots2026/docs/week10-ethics-robotics',
+                component: ComponentCreator('/robots2026/docs/week10-ethics-robotics', '153'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/ai-humanoid-robotics/docs/week12-future-robotics',
-                component: ComponentCreator('/ai-humanoid-robotics/docs/week12-future-robotics', '76a'),
+                path: '/robots2026/docs/week11-applications-domains',
+                component: ComponentCreator('/robots2026/docs/week11-applications-domains', '61b'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/ai-humanoid-robotics/docs/week13-conclusion',
-                component: ComponentCreator('/ai-humanoid-robotics/docs/week13-conclusion', '9ff'),
+                path: '/robots2026/docs/week12-future-robotics',
+                component: ComponentCreator('/robots2026/docs/week12-future-robotics', 'a97'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/ai-humanoid-robotics/docs/week2-motion-planning',
-                component: ComponentCreator('/ai-humanoid-robotics/docs/week2-motion-planning', 'bfe'),
+                path: '/robots2026/docs/week13-conclusion',
+                component: ComponentCreator('/robots2026/docs/week13-conclusion', 'b34'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/ai-humanoid-robotics/docs/week3-perception-systems',
-                component: ComponentCreator('/ai-humanoid-robotics/docs/week3-perception-systems', '5f3'),
+                path: '/robots2026/docs/week2-motion-planning',
+                component: ComponentCreator('/robots2026/docs/week2-motion-planning', 'b3b'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/ai-humanoid-robotics/docs/week4-control-theory',
-                component: ComponentCreator('/ai-humanoid-robotics/docs/week4-control-theory', 'd90'),
+                path: '/robots2026/docs/week3-perception-systems',
+                component: ComponentCreator('/robots2026/docs/week3-perception-systems', '0e1'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/ai-humanoid-robotics/docs/week5-bipedal-locomotion',
-                component: ComponentCreator('/ai-humanoid-robotics/docs/week5-bipedal-locomotion', '879'),
+                path: '/robots2026/docs/week4-control-theory',
+                component: ComponentCreator('/robots2026/docs/week4-control-theory', '6f9'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/ai-humanoid-robotics/docs/week6-manipulation-knowledge',
-                component: ComponentCreator('/ai-humanoid-robotics/docs/week6-manipulation-knowledge', '1a9'),
+                path: '/robots2026/docs/week5-bipedal-locomotion',
+                component: ComponentCreator('/robots2026/docs/week5-bipedal-locomotion', '83c'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/ai-humanoid-robotics/docs/week7-humanoid-hardware',
-                component: ComponentCreator('/ai-humanoid-robotics/docs/week7-humanoid-hardware', '800'),
+                path: '/robots2026/docs/week6-manipulation-knowledge',
+                component: ComponentCreator('/robots2026/docs/week6-manipulation-knowledge', '829'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/ai-humanoid-robotics/docs/week8-ai-integration',
-                component: ComponentCreator('/ai-humanoid-robotics/docs/week8-ai-integration', '96a'),
+                path: '/robots2026/docs/week7-humanoid-hardware',
+                component: ComponentCreator('/robots2026/docs/week7-humanoid-hardware', '5d5'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/ai-humanoid-robotics/docs/week9-human-robot-interaction',
-                component: ComponentCreator('/ai-humanoid-robotics/docs/week9-human-robot-interaction', '92f'),
+                path: '/robots2026/docs/week8-ai-integration',
+                component: ComponentCreator('/robots2026/docs/week8-ai-integration', '80c'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/robots2026/docs/week9-human-robot-interaction',
+                component: ComponentCreator('/robots2026/docs/week9-human-robot-interaction', 'd9d'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               }
@@ -140,8 +146,8 @@ export default [
     ]
   },
   {
-    path: '/ai-humanoid-robotics/',
-    component: ComponentCreator('/ai-humanoid-robotics/', '4b3'),
+    path: '/robots2026/',
+    component: ComponentCreator('/robots2026/', 'f5a'),
     exact: true
   },
   {
