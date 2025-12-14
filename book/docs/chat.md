@@ -1,7 +1,8 @@
 ---
+id: chat
 title: AI Chat Assistant
-description: Ask questions about the Robots 2026 book using an AI-powered assistant
 ---
+
 
 # 🤖 AI Chat Assistant
 
