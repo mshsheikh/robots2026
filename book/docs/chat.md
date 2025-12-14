@@ -34,3 +34,6 @@ The chat below connects to a local Retrieval-Augmented Generation (RAG) backend.
   height="600"
   style="border:1px solid #1e293b;border-radius:8px;">
 </iframe>
+
+⚠️ This demo requires the backend to be running locally on the same machine
+where the browser is opened.
