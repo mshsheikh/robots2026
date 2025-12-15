@@ -39,21 +39,26 @@ export default [
   },
   {
     path: '/robots2026/docs',
-    component: ComponentCreator('/robots2026/docs', 'c61'),
+    component: ComponentCreator('/robots2026/docs', '793'),
     routes: [
       {
         path: '/robots2026/docs',
-        component: ComponentCreator('/robots2026/docs', '517'),
+        component: ComponentCreator('/robots2026/docs', '5e0'),
         routes: [
           {
             path: '/robots2026/docs',
-            component: ComponentCreator('/robots2026/docs', '8aa'),
+            component: ComponentCreator('/robots2026/docs', '67e'),
             routes: [
               {
                 path: '/robots2026/docs/chat',
                 component: ComponentCreator('/robots2026/docs/chat', '75b'),
                 exact: true,
                 sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/robots2026/docs/demo-cheatsheet',
+                component: ComponentCreator('/robots2026/docs/demo-cheatsheet', '15c'),
+                exact: true
               },
               {
                 path: '/robots2026/docs/intro',

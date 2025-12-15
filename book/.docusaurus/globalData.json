@@ -16,6 +16,10 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "demo-cheatsheet",
+              "path": "/robots2026/docs/demo-cheatsheet"
+            },
+            {
               "id": "intro",
               "path": "/robots2026/docs/intro",
               "sidebar": "tutorialSidebar"

@@ -35,7 +35,14 @@
       "Bash(git add book/docs/chat.md book/sidebars.js)",
       "Bash(git push https://mshsheikh:ghp_dBhKeqdlwa-sigCrBXncpSIxAwtXw0XaLpqmdR_glN1wCTZKfU0JWWatrghL0FIGQ@github.com/mshsheikh/robots2026.git main)",
       "Bash(git remote set-url origin https://mshsheikh:ghp_dBhKeqdlwa-sigCrBXncpSIxAwtXw0XaLpqmdR_glN1wCTZKfU0JWWatrghL0FIGQ@github.com/mshsheikh/robots2026.git)",
-      "Bash(git remote set-url origin https://github.com/mshsheikh/robots2026.git)"
+      "Bash(git remote set-url origin https://github.com/mshsheikh/robots2026.git)",
+      "Bash(git checkout -b 006-phase-b-judge-ready)",
+      "Bash(git add book/docs/chat.md README.md book/docs/demo-cheatsheet.md)",
+      "Bash(git commit -m \"phase-b: judge-ready docs — how the AI chat works, demo flow, README\")",
+      "Bash(test -d book/static/chat)",
+      "Bash(git checkout -b 007-chat-ui-visual-polish)",
+      "Bash(git add book/static/chat/index.html)",
+      "Bash(git commit -m \"ui: redesign AI chat assistant with dark/light mode and animated background\")"
     ],
     "deny": [],
     "ask": []
