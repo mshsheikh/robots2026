@@ -151,7 +151,7 @@ Consider how these technologies might integrate with each other and with current
 Future robots will require:
 - **Enhanced Processing Power**: 10-100x more computational capability for real-time AI processing
 - **Advanced Memory Systems**: Large-scale memory for learning, planning, and experience storage
-- **Ultra-Low Latency Communications**: <1ms response times for safety-critical applications
+- **Ultra-Low Latency Communications**: ```<1ms``` response times for safety-critical applications
 - **Energy Efficiency**: 10x improvement in energy efficiency for mobile platforms
 - **Robust Connectivity**: Reliable communication for cloud integration and multi-robot coordination
 - **Advanced Sensing**: Multi-modal sensors with human-like perception capabilities
