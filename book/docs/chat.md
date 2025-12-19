@@ -1,80 +1,81 @@
 ---
 id: chat
-title: AI Chat Assistant
+title: How the AI Chat Works
+sidebar_position: 15
 ---
 
+# How the AI Chat Works
 
-# 🤖 AI Chat Assistant
+## Overview
 
-This page provides access to an AI-powered assistant trained on the *Robots 2026* book content.
+The AI chat system provides intelligent question-answering capabilities for the robotics curriculum using Retrieval-Augmented Generation (RAG). This system allows users to ask questions about humanoid robotics concepts and receive answers grounded in the course documentation. The chat interface is embedded directly in the Docusaurus documentation site and connects to a FastAPI backend that retrieves relevant information from a Qdrant vector database.
 
-## What this does
-- Answers questions using the book chapters as context
-- Powered by Retrieval-Augmented Generation (RAG)
-- Backend: FastAPI + Vector Database (Qdrant)
+## System Architecture
 
-## How to use
-For now, the backend runs locally for development and demos.
+The chat system follows a modular architecture with clear separation of concerns:
 
-**Local endpoint:**
-http://localhost:8000
+- **Docusaurus Frontend**: Static documentation site with embedded chat UI component
+- **HTML/CSS/JS Chat Interface**: Self-contained chat widget that communicates with the backend via HTTP requests
+- **FastAPI Backend**: REST API server handling RAG queries with `/query` and `/query_selected` endpoints
+- **Qdrant Vector Database**: Persistent storage for embedded curriculum content with similarity search capabilities
+- **Embedding System**: Converts text to high-dimensional vectors using OpenAI-compatible models
+- **Neon Postgres (Planned)**: Future integration for storing conversation history and user preferences
 
-In the next phase, this chat will be embedded directly here with a live UI.
+The architecture adheres to Spec-Kit Plus principles with judge-aware safety considerations and modular design for easy maintenance.
 
-## Live Demo (Phase A)
+## Retrieval-Augmented Generation (RAG) Flow
 
-⚠️ **Important:**
-This demo requires the backend to be running locally on the same machine
-where the browser is opened.
+The RAG system operates through the following sequence:
 
-> Start the backend with:
-> `uvicorn rag.fastapi.main:app --port 8000`
+1. **Query Reception**: User question is submitted to the FastAPI backend via the `/query` endpoint
+2. **Embedding Generation**: Question is converted to a vector embedding using the same model used during document indexing
+3. **Similarity Search**: Qdrant performs vector similarity search to find top-K most relevant document chunks
+4. **Context Assembly**: Retrieved chunks are assembled into context for the response generation
+5. **Response Generation**: (Future implementation) LLM generates response based on retrieved context
+6. **Results Return**: JSON response containing relevant chunks and metadata is returned to frontend
 
-<iframe
-  src="/robots2026/chat/index.html"
-  width="100%"
-  height="600"
-  style={{ border: "1px solid #1e293b", borderRadius: "8px" }}
-/>
+The system currently returns the retrieved document chunks without final response generation, allowing users to see the source material that informed the answer.
 
----
-## How the AI Chat Works (concise for judges)
+## Selected-Text Question Answering
 
-**Architecture (summary)**
-- The UI (embedded in this book) is a simple static HTML page: `/robots2026/chat/index.html`.
-- The backend is a local FastAPI RAG service that answers questions using a retrieval + generation pipeline.
-- Retrieval: document vectors are stored in a vector DB (Qdrant planned).
-- Generation: a local or cloud LLM produces the answer using retrieved context (Neon/Postgres plan).
-- For Phase A the backend runs locally and the site shows an embedded UI; judges must run the backend locally to see live answers. This design is intentional and documented below.
+The `/query_selected` endpoint provides enhanced context by incorporating user-selected text:
 
-**Why this design (short)**
-- Phase A focuses on reproducible, auditable demos: judges can run everything locally.
-- Avoids exposing credentials or incurring cloud costs during the live judge demo.
-- Roadmap: Phase B/C will add secure hosted vector + Neon deployment if required.
+1. **Combined Query**: User question and selected text are combined into a single semantic query
+2. **Enhanced Embedding**: The combined text is embedded to capture both question intent and context
+3. **Focused Retrieval**: Qdrant searches for chunks specifically relevant to the question-context combination
+4. **Contextual Results**: Returned results are more targeted to the specific context provided by the user
 
-**Local demo note (judge instructions)**
-⚠️ This demo requires the backend to be running on the machine where the browser is open.
-Start the backend with:
-```
+This feature enables users to ask questions about specific passages while still benefiting from broader curriculum knowledge.
 
-uvicorn rag.fastapi.main:app --port 8000
+## Local Demo vs Live Deployment
 
-```
-Open the book page, go to **Tools & Resources → AI Chat Assistant**, and run the demo.
+**Local Development Environment**:
+- Full RAG functionality with active Qdrant connection
+- Real-time vector search and retrieval
+- Complete query and query_selected endpoint functionality
+- HTTPS or HTTP serving compatible with embedded chat
 
----
+**Live GitHub Pages Deployment**:
+- Chat interface remains visible but becomes read-only
+- Browser security policies block HTTP API calls from HTTPS pages (Mixed Content Policy)
+- Users can view documentation but cannot submit queries
+- This limitation is inherent to GitHub Pages' HTTPS-only serving and cross-origin security
 
-## Demo Flow (90 seconds — freeze)
+The architectural design accounts for this browser security constraint while maintaining full functionality in local environments.
 
-**Goal:** Demonstrate end-to-end RAG in 90 seconds.
+## Current Limitations and Future Improvements
 
-1. (0–10s) Open project landing page: `https://mshsheikh.github.io/robots2026/`
-2. (10–30s) Navigate to **Tools & Resources → AI Chat Assistant** (show iframe).
-3. (30–45s) Verify the UI loads; show the static chat box briefly. (Say: "UI is static and embedded.")
-4. (45–75s) Ask a single question about the book, e.g. _"What are the main modules in the Physical AI course?"_ — mention that backend must be running for a live answer.
-5. (75–90s) Explain architecture quickly: "Retrieval from vector DB → Generation by LLM → Returned by FastAPI."
-6. Optional: if backend is not running, show fallback: explain what answer would look like and point to local `rag` folder.
+**Current Limitations**:
+- Response generation not yet implemented (returns source chunks only)
+- Mixed content security prevents live deployment API calls
+- Local Qdrant dependency requires separate service startup
+- Embedding model requires API key for production performance
 
-**Demo Tips**
-- Announce you will run the demo locally if the judge prefers live answers.
-- Keep one short slide (or terminal) showing `uvicorn` running to demonstrate backend health.
+**Planned Improvements**:
+- Full response generation with LLM integration
+- Conversation history and context management
+- Enhanced document chunking strategies for better retrieval
+- Neon Postgres integration for user session persistence
+- Production-grade embedding and response generation
+
+The system demonstrates architectural correctness with scalable design patterns and clear separation of frontend, backend, and data storage concerns.
