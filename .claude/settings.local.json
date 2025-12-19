@@ -49,7 +49,9 @@
       "Bash(timeout 15 git log --oneline -10)",
       "Bash(timeout 5 git log --oneline -3)",
       "Bash(timeout 5 git status)",
-      "Bash(timeout 5 git diff --name-only)"
+      "Bash(timeout 5 git diff --name-only)",
+      "Bash(git add demo/90-second-demo.md)",
+      "Bash(git commit -m \"docs(demo): add 90-second judge demo script explaining RAG architecture\")"
     ],
     "deny": [],
     "ask": []

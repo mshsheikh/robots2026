@@ -1,81 +1,81 @@
 ---
 id: chat
-title: How the AI Chat Works
+title: AI Chat Assistant & How It Works
 sidebar_position: 15
 ---
 
-# How the AI Chat Works
+# 🤖 AI Chat Assistant
 
-## Overview
+This page provides a live demo and detailed explanation of the AI chat system.
 
-The AI chat system provides intelligent question-answering capabilities for the robotics curriculum using Retrieval-Augmented Generation (RAG). This system allows users to ask questions about humanoid robotics concepts and receive answers grounded in the course documentation. The chat interface is embedded directly in the Docusaurus documentation site and connects to a FastAPI backend that retrieves relevant information from a Qdrant vector database.
+---
 
-## System Architecture
+## Live Demo
 
-The chat system follows a modular architecture with clear separation of concerns:
+<iframe
+  src="/robots2026/chat/index.html"
+  width="100%"
+  height="600"
+  style={{ border: "1px solid #1e293b", borderRadius: "8px" }}
+/>
 
-- **Docusaurus Frontend**: Static documentation site with embedded chat UI component
-- **HTML/CSS/JS Chat Interface**: Self-contained chat widget that communicates with the backend via HTTP requests
-- **FastAPI Backend**: REST API server handling RAG queries with `/query` and `/query_selected` endpoints
-- **Qdrant Vector Database**: Persistent storage for embedded curriculum content with similarity search capabilities
-- **Embedding System**: Converts text to high-dimensional vectors using OpenAI-compatible models
-- **Neon Postgres (Planned)**: Future integration for storing conversation history and user preferences
+> ⚠️ **Note:** For live answers, the backend must be running locally:
+> ```bash
+> uvicorn rag.fastapi.main:app --port 8000
+> ```
 
-The architecture adheres to Spec-Kit Plus principles with judge-aware safety considerations and modular design for easy maintenance.
+---
 
-## Retrieval-Augmented Generation (RAG) Flow
+## Demo Flow (90 seconds — freeze)
 
-The RAG system operates through the following sequence:
+**Goal:** Demonstrate end-to-end RAG in 90 seconds.
 
-1. **Query Reception**: User question is submitted to the FastAPI backend via the `/query` endpoint
-2. **Embedding Generation**: Question is converted to a vector embedding using the same model used during document indexing
-3. **Similarity Search**: Qdrant performs vector similarity search to find top-K most relevant document chunks
-4. **Context Assembly**: Retrieved chunks are assembled into context for the response generation
-5. **Response Generation**: (Future implementation) LLM generates response based on retrieved context
-6. **Results Return**: JSON response containing relevant chunks and metadata is returned to frontend
+1. (0–10s) Open project landing page: `https://mshsheikh.github.io/robots2026/`
+2. (10–30s) Navigate to **Tools & Resources → AI Chat Assistant**
+3. (30–45s) Verify the UI loads; show the static chat box briefly
+4. (45–75s) Ask a single question, e.g., _"What are the main modules in the Physical AI course?"_
+5. (75–90s) Explain architecture quickly: "Retrieval → LLM → FastAPI → Frontend"
+6. Optional fallback if backend not running: explain what the answer would look like using local `rag` folder
 
-The system currently returns the retrieved document chunks without final response generation, allowing users to see the source material that informed the answer.
+**Tips:** Show `uvicorn` terminal briefly to demonstrate backend health.
 
-## Selected-Text Question Answering
+---
 
-The `/query_selected` endpoint provides enhanced context by incorporating user-selected text:
+## How the AI Chat Works
 
-1. **Combined Query**: User question and selected text are combined into a single semantic query
-2. **Enhanced Embedding**: The combined text is embedded to capture both question intent and context
-3. **Focused Retrieval**: Qdrant searches for chunks specifically relevant to the question-context combination
-4. **Contextual Results**: Returned results are more targeted to the specific context provided by the user
+### Architecture Overview
 
-This feature enables users to ask questions about specific passages while still benefiting from broader curriculum knowledge.
+- **Frontend:** Docusaurus page with embedded chat iframe  
+- **Chat Interface:** HTML/CSS/JS widget communicating via HTTP  
+- **Backend:** FastAPI RAG service  
+- **Vector DB:** Qdrant (stores document embeddings)  
+- **Embedding System:** Converts text into vectors (OpenAI-compatible)  
+- **Future:** Neon Postgres for conversation persistence  
 
-## Local Demo vs Live Deployment
+### Retrieval-Augmented Generation (RAG) Flow
 
-**Local Development Environment**:
-- Full RAG functionality with active Qdrant connection
-- Real-time vector search and retrieval
-- Complete query and query_selected endpoint functionality
-- HTTPS or HTTP serving compatible with embedded chat
+1. User submits question → backend `/query` endpoint  
+2. Embedding generated for the question  
+3. Qdrant returns top-K relevant document chunks  
+4. Context assembled and sent to LLM (planned)  
+5. JSON results returned to frontend  
 
-**Live GitHub Pages Deployment**:
-- Chat interface remains visible but becomes read-only
-- Browser security policies block HTTP API calls from HTTPS pages (Mixed Content Policy)
-- Users can view documentation but cannot submit queries
-- This limitation is inherent to GitHub Pages' HTTPS-only serving and cross-origin security
+### Selected-Text Question Answering
 
-The architectural design accounts for this browser security constraint while maintaining full functionality in local environments.
+- Combines user question + selected text for more focused retrieval  
+- Returns results contextualized to user-selected passage  
 
-## Current Limitations and Future Improvements
+### Local vs Live Deployment
 
-**Current Limitations**:
-- Response generation not yet implemented (returns source chunks only)
-- Mixed content security prevents live deployment API calls
-- Local Qdrant dependency requires separate service startup
-- Embedding model requires API key for production performance
+- **Local:** Full RAG functionality, including `/query` and `/query_selected` endpoints  
+- **GitHub Pages:** Embedded UI is visible, but live queries blocked due to mixed content policy  
 
-**Planned Improvements**:
-- Full response generation with LLM integration
-- Conversation history and context management
-- Enhanced document chunking strategies for better retrieval
-- Neon Postgres integration for user session persistence
-- Production-grade embedding and response generation
+### Current Limitations & Future Improvements
 
-The system demonstrates architectural correctness with scalable design patterns and clear separation of frontend, backend, and data storage concerns.
+- Response generation not fully implemented  
+- Mixed content security limits live API calls  
+- Backend Qdrant service required for local queries  
+- Planned: LLM integration, session persistence, improved retrieval strategies
+
+---
+
