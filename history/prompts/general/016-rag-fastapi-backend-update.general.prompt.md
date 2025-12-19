@@ -1,5 +1,5 @@
 ---
-id: 015
+id: 017
 title: "RAG FastAPI main.py — Endpoints & Qdrant Integration"
 stage: "misc"
 date_iso: "2025-12-17"
@@ -50,7 +50,7 @@ prompt_text: |
 
   output:
     - updated rag/fastapi/main.py
-    - suggested git commit message
+    - suggested commit message
     - PHR title
 response_text: |
   Updated the RAG FastAPI backend to include new endpoints and Qdrant integration:
@@ -74,10 +74,11 @@ evaluation: |
 Updated the RAG FastAPI main.py file to include new query endpoints and Qdrant integration.
 
 ## Changes Made
-- Preserved existing frontmatter and introductory content
-- Added "Learning Paths by Experience Level" section
-- Created four subsections: Newbie in Tech, Junior/Beginner, Mid-Level Engineer, and Senior/Executive
-- Each track includes content appropriate to the experience level with varying degrees of depth and complexity
+- Added /query and /query_selected endpoints for document retrieval
+- Implemented CORS middleware for frontend integration
+- Added Qdrant client setup with connection handling and verification
+- Included Neon Postgres placeholder with connection logic
+- Each endpoint includes proper request/response models and error handling
 
 ## Files Modified
-- `rag/fastapi/main.py`: Enhanced with RAG endpoints and Qdrant integration as specified
+- `rag/fastapi/main.py`: Enhanced with new endpoints and Qdrant integration
