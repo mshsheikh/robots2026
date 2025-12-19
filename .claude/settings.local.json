@@ -47,7 +47,9 @@
       "Bash(git commit -m \"feat(rag): add /query and /query_selected endpoints with CORS and Neon placeholders\n\n- Added /query endpoint for document retrieval with Qdrant integration\n- Added /query_selected endpoint for context-aware document retrieval\n- Implemented CORS middleware for Docusaurus frontend integration\n- Added Qdrant client setup with connection handling and verification\n- Included Neon Postgres placeholder with connection logic\n- Added comprehensive error handling and validation\n- Maintained all existing functionality while adding new features\n\nFiles modified:\n- rag/fastapi/main.py\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\")",
       "Bash(timeout 10 git log --oneline -5)",
       "Bash(timeout 15 git log --oneline -10)",
-      "Bash(timeout 5 git log --oneline -3)"
+      "Bash(timeout 5 git log --oneline -3)",
+      "Bash(timeout 5 git status)",
+      "Bash(timeout 5 git diff --name-only)"
     ],
     "deny": [],
     "ask": []
