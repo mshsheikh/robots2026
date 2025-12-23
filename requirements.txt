@@ -4,8 +4,7 @@ qdrant-client==1.16.1
 pydantic==2.12.5
 python-dotenv==1.0.1
 openai==1.57.4
-
-sqlalchemy==2.0.30
-psycopg2-binary==2.9.9
-httpx==0.27.0
-requests==2.31.0
+sqlalchemy
+psycopg2-binary
+httpx
+requests
