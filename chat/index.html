@@ -373,17 +373,26 @@
       try {
         const API_BASE = window.location.hostname === "localhost"
           ? "http://localhost:8000"
-          : "http://localhost:8000";
+          : "https://your-actual-cloud-backend.com";
 
         const res = await fetch(`${API_BASE}/ask`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question })
+          body: JSON.stringify({ query: question })
         });
 
         const data = await res.json();
         removeLoadingMessage();
-        addMessage(data.answer || "No response", false);
+
+        if (data.results && data.results.length > 0) {
+          // Format the response from RAG results
+          const responseText = data.results.map((result, index) =>
+            `${index + 1}. ${result.text} (Score: ${result.score})`
+          ).join('\n\n');
+          addMessage(responseText, false);
+        } else {
+          addMessage("No results found for your query.", false);
+        }
       } catch (err) {
         removeLoadingMessage();
         addMessage("Backend not reachable. Make sure to run: uvicorn rag.fastapi.main:app --port 8000", false);
