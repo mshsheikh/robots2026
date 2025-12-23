@@ -1,129 +1,86 @@
 {
-  "/robots2026/__docusaurus/debug-13c": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
-    "__context": {
-      "plugin": "plugin---robots-2026-docusaurus-debugb-38-01f"
-    }
-  },
-  "/robots2026/__docusaurus/debug/config-a39": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
-    "__context": {
-      "plugin": "plugin---robots-2026-docusaurus-debugb-38-01f"
-    }
-  },
-  "/robots2026/__docusaurus/debug/content-76e": {
-    "__comp": "__comp---theme-debug-contentba-8-ce7",
-    "__context": {
-      "plugin": "plugin---robots-2026-docusaurus-debugb-38-01f"
-    },
-    "__props": "__props---robots-2026-docusaurus-debug-content-05-a-5de"
-  },
-  "/robots2026/__docusaurus/debug/globalData-6c8": {
-    "__comp": "__comp---theme-debug-global-dataede-0fa",
-    "__context": {
-      "plugin": "plugin---robots-2026-docusaurus-debugb-38-01f"
-    }
-  },
-  "/robots2026/__docusaurus/debug/metadata-503": {
-    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
-    "__context": {
-      "plugin": "plugin---robots-2026-docusaurus-debugb-38-01f"
-    }
-  },
-  "/robots2026/__docusaurus/debug/registry-075": {
-    "__comp": "__comp---theme-debug-registry-679-501",
-    "__context": {
-      "plugin": "plugin---robots-2026-docusaurus-debugb-38-01f"
-    }
-  },
-  "/robots2026/__docusaurus/debug/routes-888": {
-    "__comp": "__comp---theme-debug-routes-946-699",
-    "__context": {
-      "plugin": "plugin---robots-2026-docusaurus-debugb-38-01f"
-    }
-  },
   "/robots2026/docs-793": {
-    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__comp": "5e95c892",
     "__context": {
-      "plugin": "plugin---robots-2026-docsaba-e00"
+      "plugin": "aba21aa0"
     }
   },
   "/robots2026/docs-5e0": {
-    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
-    "__props": "__props---robots-2026-docs-78-b-96e"
+    "__comp": "a7bd4aaa",
+    "__props": "78b1422a"
   },
   "/robots2026/docs-67e": {
-    "__comp": "__comp---theme-doc-roota-94-67a"
+    "__comp": "a94703ab"
   },
   "/robots2026/docs/chat-75b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-chat-85-a-9e9"
+    "__comp": "17896441",
+    "content": "85aae560"
   },
   "/robots2026/docs/demo-cheatsheet-15c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-demo-cheatsheet-58-c-3ed"
+    "__comp": "17896441",
+    "content": "58c8232f"
   },
   "/robots2026/docs/intro-a0f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-intro-0-e-3-f7d"
+    "__comp": "17896441",
+    "content": "0e384e19"
   },
   "/robots2026/docs/week1-ros2-basics-2dc": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-week-1-ros-2-basics-5-b-4-2a2"
+    "__comp": "17896441",
+    "content": "5b452c05"
   },
   "/robots2026/docs/week10-ethics-robotics-153": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-week-10-ethics-roboticsc-8-c-b7c"
+    "__comp": "17896441",
+    "content": "c8c96e8c"
   },
   "/robots2026/docs/week11-applications-domains-61b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-week-11-applications-domains-847-bef"
+    "__comp": "17896441",
+    "content": "847f8ff4"
   },
   "/robots2026/docs/week12-future-robotics-a97": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-week-12-future-roboticsf-62-cdb"
+    "__comp": "17896441",
+    "content": "f627e2e5"
   },
   "/robots2026/docs/week13-conclusion-b34": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-week-13-conclusion-713-b33"
+    "__comp": "17896441",
+    "content": "713d3b40"
   },
   "/robots2026/docs/week2-motion-planning-b3b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-week-2-motion-planning-4-a-7-3dc"
+    "__comp": "17896441",
+    "content": "4a7546e4"
   },
   "/robots2026/docs/week3-perception-systems-0e1": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-week-3-perception-systemsaa-8-713"
+    "__comp": "17896441",
+    "content": "aa81a42a"
   },
   "/robots2026/docs/week4-control-theory-6f9": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-week-4-control-theory-768-b94"
+    "__comp": "17896441",
+    "content": "768abb88"
   },
   "/robots2026/docs/week5-bipedal-locomotion-83c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-week-5-bipedal-locomotion-123-366"
+    "__comp": "17896441",
+    "content": "12369d06"
   },
   "/robots2026/docs/week6-manipulation-knowledge-829": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-week-6-manipulation-knowledgeda-0-54d"
+    "__comp": "17896441",
+    "content": "da0990be"
   },
   "/robots2026/docs/week7-humanoid-hardware-5d5": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-week-7-humanoid-hardware-0-e-5-169"
+    "__comp": "17896441",
+    "content": "0e51f7d9"
   },
   "/robots2026/docs/week8-ai-integration-80c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-week-8-ai-integration-681-464"
+    "__comp": "17896441",
+    "content": "68133a75"
   },
   "/robots2026/docs/week9-human-robot-interaction-d9d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---robots-2026-docs-week-9-human-robot-interaction-83-a-c86"
+    "__comp": "17896441",
+    "content": "83aa8a59"
   },
   "/robots2026/-f5a": {
-    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
+    "__comp": "1f391b9e",
     "__context": {
-      "plugin": "plugin---robots-2026-a-74-de8"
+      "plugin": "a7456010"
     },
-    "content": "content---robots-2026-f-39-03f"
+    "content": "f3976560"
   }
 }
