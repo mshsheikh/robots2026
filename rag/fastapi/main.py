@@ -3,50 +3,69 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 from qdrant_client import QdrantClient
-from qdrant_client.models import Filter, FieldCondition, MatchValue
+import os
+import requests
+from sqlalchemy import create_engine, text
+from fastapi.responses import JSONResponse
 
-# Optional: OpenAI embeddings
-try:
-    from openai import OpenAI
-    openai_client = OpenAI()
-    def embed_text(text: str) -> list:
-        resp = openai_client.embeddings.create(model='text-embedding-3-small', input=text)
-        return resp.data[0].embedding
-except Exception:
-    # Placeholder embedding if OpenAI unavailable
-    def embed_text(text: str) -> list:
-        import numpy as np
-        return [0.0]*1536  # Dummy vector for testing
+# ----------------------------
+# Qwen Embedding Helper
+# ----------------------------
+from rag.qwen_embeddings import get_qwen_embeddings as embed_text
 
 # ----------------------------
 # FastAPI Setup
 # ----------------------------
-app = FastAPI(title='robots2026 RAG API')
+app = FastAPI(title="robots2026 RAG API")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],  # Judge-safe
-    allow_methods=['*'],
-    allow_headers=['*']
+    allow_origins=["*"],  # judge-safe
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # ----------------------------
-# Qdrant Client Initialization
+# Hosted Qdrant and Neon DB
 # ----------------------------
-qdrant_client = QdrantClient(url='http://localhost:6333')
-COLLECTION_NAME = 'book_chunks'
+# Qdrant hosted client
+qdrant_client = QdrantClient(
+    url=os.getenv("QDRANT_URL"),
+    api_key=os.getenv("QDRANT_API_KEY")
+)
+COLLECTION_NAME = "robots2026"
+
+# Neon DB (Postgres) connection
+engine = create_engine(os.getenv("NEON_DATABASE_URL"), echo=False)
+
+# Optional: create a table for RAG metadata if it doesn't exist
+try:
+    with engine.connect() as conn:
+        conn.execute(text('''
+            CREATE TABLE IF NOT EXISTS rag_metadata (
+                id SERIAL PRIMARY KEY,
+                chunk_id INT NOT NULL,
+                title TEXT,
+                text TEXT,
+                created_at TIMESTAMP DEFAULT NOW()
+            )
+        '''))
+        conn.commit()
+except Exception as e:
+    print(f"Warning: failed to create metadata table: {e}")
 
 # ----------------------------
-# Request / Response Models
+# Models
 # ----------------------------
 class QueryRequest(BaseModel):
-    query: str
+    query: str = None
+    question: str = None
     top_k: int = 3
 
-
-class QuerySelectedRequest(BaseModel):
-    query: str
-    selected_text: str
-    top_k: int = 3
+    @property
+    def effective_query(self) -> str:
+        # Use 'query' if available, otherwise use 'question' for compatibility
+        return self.query or self.question
 
 class Chunk(BaseModel):
     text: str
@@ -55,51 +74,62 @@ class Chunk(BaseModel):
 class QueryResponse(BaseModel):
     results: List[Chunk]
 
-
-class QuerySelectedResponse(BaseModel):
-    results: List[Chunk]
-
 # ----------------------------
-# Helper Functions
+# Retrieval Logic (FIXED)
 # ----------------------------
-def retrieve_chunks_from_qdrant(query: str, top_k: int = 3) -> List[Chunk]:
+def retrieve_chunks_from_qdrant(query: str, top_k: int) -> List[Chunk]:
     try:
-        query_vector = embed_text(query)
-        search_result = qdrant_client.search(
+        if not query:
+            raise ValueError("Query cannot be empty")
+        vector = embed_text(query)
+
+        hits = qdrant_client.search_points(
             collection_name=COLLECTION_NAME,
-            query_vector=query_vector,
+            vector=vector,
             limit=top_k,
-            with_payload=True
+            with_payload=True,
         )
+
         results = []
-        for hit in search_result:
-            text = hit.payload.get('text', '')
-            score = hit.score or 0.0
-            results.append(Chunk(text=text, score=score))
+        for hit in hits:
+            results.append(
+                Chunk(
+                    text=hit.payload.get("text", ""),
+                    score=hit.score,
+                )
+            )
+
         return results
+
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f'Qdrant retrieval failed: {str(e)}')
-
-def retrieve_chunks_from_qdrant_with_selection(query: str, selected_text: str, top_k: int = 3) -> List[Chunk]:
-    combined = f'{query} {selected_text}' if selected_text else query
-    return retrieve_chunks_from_qdrant(combined, top_k)
+        raise HTTPException(status_code=500, detail=str(e))
 
 # ----------------------------
-# API Endpoints
+# Endpoints
 # ----------------------------
-@app.post('/query', response_model=QueryResponse)
-def query_endpoint(request: QueryRequest):
-    chunks = retrieve_chunks_from_qdrant(request.query, request.top_k)
-    return QueryResponse(results=chunks)
+@app.post("/ask", response_model=QueryResponse)
+async def ask_endpoint(request: QueryRequest):
+    results = retrieve_chunks_from_qdrant(request.effective_query, request.top_k)
+    return QueryResponse(results=results)
 
-@app.post('/query_selected', response_model=QueryResponse)
-def query_selected_endpoint(request: QuerySelectedRequest):
-    chunks = retrieve_chunks_from_qdrant_with_selection(request.query, request.selected_text)
-    return QueryResponse(results=chunks)
 
-# ----------------------------
-# Judge-Safe Run
-# ----------------------------
-if __name__ == '__main__':
-    import uvicorn
-    uvicorn.run(app, host='0.0.0.0', port=8000)
+@app.get("/verify")
+async def verify_connections():
+    result = {"qdrant": None, "neon": None}
+    # Test Qdrant connection
+    try:
+        collections = qdrant_client.get_collections().collections
+        result["qdrant"] = {"status": "ok", "collections": [c.name for c in collections]}
+    except Exception as e:
+        result["qdrant"] = {"status": "error", "error": str(e)}
+    # Test Neon DB connection
+    try:
+        with engine.connect() as conn:
+            test = conn.execute(text("SELECT 1")).fetchone()
+            if test and test[0] == 1:
+                result["neon"] = {"status": "ok"}
+            else:
+                result["neon"] = {"status": "error", "error": "Unexpected result"}
+    except Exception as e:
+        result["neon"] = {"status": "error", "error": str(e)}
+    return JSONResponse(result)
