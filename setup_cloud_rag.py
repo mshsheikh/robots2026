@@ -54,7 +54,7 @@ def main():
 
     # Replace the cloud backend URL placeholder
     updated_content = content.replace(
-        ' : "https://<your-cloud-backend>";',
+        ' : "https://robots2026.up.railway.app";',
         f' : "{cloud_backend_url}";'
     )
 

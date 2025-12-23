@@ -44,7 +44,7 @@ echo "🌐 Updating chat frontend to point to cloud backend..."
 CLOUD_BACKEND_URL=\${CLOUD_BACKEND_URL:-\"https://your-actual-cloud-backend.com\"}
 
 # Update the chat frontend
-sed -i \"s| : \\\"https://<your-cloud-backend>\"| : \\\"$CLOUD_BACKEND_URL\"|g\" book/static/chat/index.html
+sed -i \"s| : \\\"https://robots2026.up.railway.app\"| : \\\"$CLOUD_BACKEND_URL\"|g\" book/static/chat/index.html
 
 echo \"✅ Chat frontend updated to use cloud backend: $CLOUD_BACKEND_URL\"
 
