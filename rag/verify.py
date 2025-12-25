@@ -1,8 +1,9 @@
 """
 Verification module for Qdrant and Neon connections.
 """
+import time
 from qdrant_client import QdrantClient
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, text as sql_text
 import os
 
 
@@ -16,7 +17,8 @@ def verify_all():
     try:
         qdrant = QdrantClient(
             url=os.getenv("QDRANT_URL"),
-            api_key=os.getenv("QDRANT_API_KEY")
+            api_key=os.getenv("QDRANT_API_KEY"),
+            timeout=60
         )
         collections = qdrant.get_collections().collections
         result["qdrant"] = {"status": "ok", "collections": [c.name for c in collections]}
@@ -30,7 +32,7 @@ def verify_all():
     try:
         engine = create_engine(os.getenv("NEON_DATABASE_URL"), echo=False)
         with engine.connect() as conn:
-            test = conn.execute(text("SELECT 1")).fetchone()
+            test = conn.execute(sql_text("SELECT 1")).fetchone()
             if test and test[0] == 1:
                 result["neon"] = {"status": "ok"}
                 print(f"✅ Neon connection: {result['neon']}")

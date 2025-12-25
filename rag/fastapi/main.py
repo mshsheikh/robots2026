@@ -5,7 +5,7 @@ from typing import List
 from qdrant_client import QdrantClient
 import os
 import requests
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, text as sql_text
 from fastapi.responses import JSONResponse
 
 # ----------------------------
@@ -28,10 +28,11 @@ app.add_middleware(
 # ----------------------------
 # Hosted Qdrant and Neon DB
 # ----------------------------
-# Qdrant hosted client
+# Qdrant hosted client with timeout
 qdrant_client = QdrantClient(
     url=os.getenv("QDRANT_URL"),
-    api_key=os.getenv("QDRANT_API_KEY")
+    api_key=os.getenv("QDRANT_API_KEY"),
+    timeout=60
 )
 COLLECTION_NAME = "robots2026"
 
@@ -41,12 +42,12 @@ engine = create_engine(os.getenv("NEON_DATABASE_URL"), echo=False)
 # Optional: create a table for RAG metadata if it doesn't exist
 try:
     with engine.connect() as conn:
-        conn.execute(text('''
+        conn.execute(sql_text('''
             CREATE TABLE IF NOT EXISTS rag_metadata (
                 id SERIAL PRIMARY KEY,
                 chunk_id INT NOT NULL,
                 title TEXT,
-                text TEXT,
+                payload_text TEXT,
                 created_at TIMESTAMP DEFAULT NOW()
             )
         '''))
@@ -83,9 +84,9 @@ def retrieve_chunks_from_qdrant(query: str, top_k: int) -> List[Chunk]:
             raise ValueError("Query cannot be empty")
         vector = embed_text(query)
 
-        hits = qdrant_client.search_points(
+        hits = qdrant_client.query_points(
             collection_name=COLLECTION_NAME,
-            vector=vector,
+            query=vector,
             limit=top_k,
             with_payload=True,
         )
@@ -125,7 +126,7 @@ async def verify_connections():
     # Test Neon DB connection
     try:
         with engine.connect() as conn:
-            test = conn.execute(text("SELECT 1")).fetchone()
+            test = conn.execute(sql_text("SELECT 1")).fetchone()
             if test and test[0] == 1:
                 result["neon"] = {"status": "ok"}
             else:
