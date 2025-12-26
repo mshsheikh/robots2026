@@ -82,29 +82,24 @@ def retrieve_chunks_from_qdrant(query: str, top_k: int) -> List[Chunk]:
     try:
         if not query:
             raise ValueError("Query cannot be empty")
+
         vector = embed_text(query)
 
-        # Perform search and normalize return type (handles tuple vs direct result)
-        result = qdrant_client.search_points(
+        result = qdrant_client.search(
             collection_name=COLLECTION_NAME,
-            vector=vector,
+            query_vector=vector,
             limit=top_k,
             with_payload=True,
         )
 
-        # Handle potential tuple return from older Qdrant versions
         hits = result[0] if isinstance(result, tuple) else result
 
         results = []
         for hit in hits:
-            # Access payload safely with fallback
-            payload_text = hit.payload.get("text", "") if hasattr(hit, 'payload') and hit.payload else ""
-            score = hit.score if hasattr(hit, 'score') else 0.0
-
             results.append(
                 Chunk(
-                    text=payload_text,
-                    score=score,
+                    text=hit.payload.get("text", "") if hit.payload else "",
+                    score=hit.score,
                 )
             )
 
