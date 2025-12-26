@@ -1,121 +1,86 @@
 {
-  "/ai-humanoid-robotics/__docusaurus/debug-e53": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
+  "/robots2026/docs-793": {
+    "__comp": "5e95c892",
     "__context": {
-      "plugin": "plugin---ai-humanoid-robotics-docusaurus-debugb-38-27e"
+      "plugin": "aba21aa0"
     }
   },
-  "/ai-humanoid-robotics/__docusaurus/debug/config-ec4": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
-    "__context": {
-      "plugin": "plugin---ai-humanoid-robotics-docusaurus-debugb-38-27e"
-    }
+  "/robots2026/docs-5e0": {
+    "__comp": "a7bd4aaa",
+    "__props": "78b1422a"
   },
-  "/ai-humanoid-robotics/__docusaurus/debug/content-bdf": {
-    "__comp": "__comp---theme-debug-contentba-8-ce7",
+  "/robots2026/docs-67e": {
+    "__comp": "a94703ab"
+  },
+  "/robots2026/docs/chat-75b": {
+    "__comp": "17896441",
+    "content": "85aae560"
+  },
+  "/robots2026/docs/demo-cheatsheet-15c": {
+    "__comp": "17896441",
+    "content": "58c8232f"
+  },
+  "/robots2026/docs/intro-a0f": {
+    "__comp": "17896441",
+    "content": "0e384e19"
+  },
+  "/robots2026/docs/week1-ros2-basics-2dc": {
+    "__comp": "17896441",
+    "content": "5b452c05"
+  },
+  "/robots2026/docs/week10-ethics-robotics-153": {
+    "__comp": "17896441",
+    "content": "c8c96e8c"
+  },
+  "/robots2026/docs/week11-applications-domains-61b": {
+    "__comp": "17896441",
+    "content": "847f8ff4"
+  },
+  "/robots2026/docs/week12-future-robotics-a97": {
+    "__comp": "17896441",
+    "content": "f627e2e5"
+  },
+  "/robots2026/docs/week13-conclusion-b34": {
+    "__comp": "17896441",
+    "content": "713d3b40"
+  },
+  "/robots2026/docs/week2-motion-planning-b3b": {
+    "__comp": "17896441",
+    "content": "4a7546e4"
+  },
+  "/robots2026/docs/week3-perception-systems-0e1": {
+    "__comp": "17896441",
+    "content": "aa81a42a"
+  },
+  "/robots2026/docs/week4-control-theory-6f9": {
+    "__comp": "17896441",
+    "content": "768abb88"
+  },
+  "/robots2026/docs/week5-bipedal-locomotion-83c": {
+    "__comp": "17896441",
+    "content": "12369d06"
+  },
+  "/robots2026/docs/week6-manipulation-knowledge-829": {
+    "__comp": "17896441",
+    "content": "da0990be"
+  },
+  "/robots2026/docs/week7-humanoid-hardware-5d5": {
+    "__comp": "17896441",
+    "content": "0e51f7d9"
+  },
+  "/robots2026/docs/week8-ai-integration-80c": {
+    "__comp": "17896441",
+    "content": "68133a75"
+  },
+  "/robots2026/docs/week9-human-robot-interaction-d9d": {
+    "__comp": "17896441",
+    "content": "83aa8a59"
+  },
+  "/robots2026/-f5a": {
+    "__comp": "1f391b9e",
     "__context": {
-      "plugin": "plugin---ai-humanoid-robotics-docusaurus-debugb-38-27e"
+      "plugin": "a7456010"
     },
-    "__props": "__props---ai-humanoid-robotics-docusaurus-debug-content-45-a-947"
-  },
-  "/ai-humanoid-robotics/__docusaurus/debug/globalData-230": {
-    "__comp": "__comp---theme-debug-global-dataede-0fa",
-    "__context": {
-      "plugin": "plugin---ai-humanoid-robotics-docusaurus-debugb-38-27e"
-    }
-  },
-  "/ai-humanoid-robotics/__docusaurus/debug/metadata-436": {
-    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
-    "__context": {
-      "plugin": "plugin---ai-humanoid-robotics-docusaurus-debugb-38-27e"
-    }
-  },
-  "/ai-humanoid-robotics/__docusaurus/debug/registry-f6a": {
-    "__comp": "__comp---theme-debug-registry-679-501",
-    "__context": {
-      "plugin": "plugin---ai-humanoid-robotics-docusaurus-debugb-38-27e"
-    }
-  },
-  "/ai-humanoid-robotics/__docusaurus/debug/routes-ed8": {
-    "__comp": "__comp---theme-debug-routes-946-699",
-    "__context": {
-      "plugin": "plugin---ai-humanoid-robotics-docusaurus-debugb-38-27e"
-    }
-  },
-  "/ai-humanoid-robotics/docs-d7f": {
-    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
-    "__context": {
-      "plugin": "plugin---ai-humanoid-robotics-docsaba-d31"
-    }
-  },
-  "/ai-humanoid-robotics/docs-c0e": {
-    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
-    "__props": "__props---ai-humanoid-robotics-docs-4-db-3c7"
-  },
-  "/ai-humanoid-robotics/docs-6ab": {
-    "__comp": "__comp---theme-doc-roota-94-67a"
-  },
-  "/ai-humanoid-robotics/docs/intro-cde": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---ai-humanoid-robotics-docs-intro-0-e-3-795"
-  },
-  "/ai-humanoid-robotics/docs/week1-ros2-basics-8e2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---ai-humanoid-robotics-docs-week-1-ros-2-basics-5-b-4-e71"
-  },
-  "/ai-humanoid-robotics/docs/week10-ethics-robotics-f39": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---ai-humanoid-robotics-docs-week-10-ethics-roboticsc-8-c-42c"
-  },
-  "/ai-humanoid-robotics/docs/week11-applications-domains-769": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---ai-humanoid-robotics-docs-week-11-applications-domains-847-a9f"
-  },
-  "/ai-humanoid-robotics/docs/week12-future-robotics-76a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---ai-humanoid-robotics-docs-week-12-future-roboticsf-62-63e"
-  },
-  "/ai-humanoid-robotics/docs/week13-conclusion-9ff": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---ai-humanoid-robotics-docs-week-13-conclusion-713-845"
-  },
-  "/ai-humanoid-robotics/docs/week2-motion-planning-bfe": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---ai-humanoid-robotics-docs-week-2-motion-planning-4-a-7-a80"
-  },
-  "/ai-humanoid-robotics/docs/week3-perception-systems-5f3": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---ai-humanoid-robotics-docs-week-3-perception-systemsaa-8-313"
-  },
-  "/ai-humanoid-robotics/docs/week4-control-theory-d90": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---ai-humanoid-robotics-docs-week-4-control-theory-768-c48"
-  },
-  "/ai-humanoid-robotics/docs/week5-bipedal-locomotion-879": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---ai-humanoid-robotics-docs-week-5-bipedal-locomotion-123-0e5"
-  },
-  "/ai-humanoid-robotics/docs/week6-manipulation-knowledge-1a9": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---ai-humanoid-robotics-docs-week-6-manipulation-knowledgeda-0-b2a"
-  },
-  "/ai-humanoid-robotics/docs/week7-humanoid-hardware-800": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---ai-humanoid-robotics-docs-week-7-humanoid-hardware-0-e-5-b4b"
-  },
-  "/ai-humanoid-robotics/docs/week8-ai-integration-96a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---ai-humanoid-robotics-docs-week-8-ai-integration-681-a32"
-  },
-  "/ai-humanoid-robotics/docs/week9-human-robot-interaction-92f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---ai-humanoid-robotics-docs-week-9-human-robot-interaction-83-a-2a1"
-  },
-  "/ai-humanoid-robotics/-4b3": {
-    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
-    "__context": {
-      "plugin": "plugin---ai-humanoid-robotics-a-74-d2d"
-    },
-    "content": "content---ai-humanoid-robotics-f-39-402"
+    "content": "f3976560"
   }
 }

@@ -5,7 +5,7 @@
   "source": "@site/docs/intro.md",
   "sourceDirName": ".",
   "slug": "/intro",
-  "permalink": "/ai-humanoid-robotics/docs/intro",
+  "permalink": "/robots2026/docs/intro",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/mshsheikh/ai-humanoid-robotics/tree/master/docs/intro.md",
@@ -18,6 +18,6 @@
   "sidebar": "tutorialSidebar",
   "next": {
     "title": "Week 1: ROS 2 Fundamentals",
-    "permalink": "/ai-humanoid-robotics/docs/week1-ros2-basics"
+    "permalink": "/robots2026/docs/week1-ros2-basics"
   }
 }
