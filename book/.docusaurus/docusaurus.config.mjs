@@ -20,17 +20,20 @@ export default {
     "path": "i18n",
     "localeConfigs": {}
   },
+  "customFields": {
+    "API_BASE": "robots2026.up.railway.app"
+  },
   "presets": [
     [
       "classic",
       {
         "docs": {
-          "sidebarPath": "E:\\ai-humanoid-robotics\\robots2026\\book\\sidebars.js",
+          "sidebarPath": "/mnt/e/ai-humanoid-robotics/robots2026/book/sidebars.js",
           "editUrl": "https://github.com/mshsheikh/ai-humanoid-robotics/tree/master/"
         },
         "blog": false,
         "theme": {
-          "customCss": "E:\\ai-humanoid-robotics\\robots2026\\book\\src\\css\\custom.css"
+          "customCss": "/mnt/e/ai-humanoid-robotics/robots2026/book/src/css/custom.css"
         }
       }
     ]
@@ -353,7 +356,6 @@ export default {
   "staticDirectories": [
     "static"
   ],
-  "customFields": {},
   "plugins": [],
   "themes": [],
   "scripts": [],

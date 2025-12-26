@@ -4,12 +4,10 @@ Ingestion module for processing book content into Qdrant.
 from pathlib import Path
 from qdrant_client import QdrantClient
 from qdrant_client.http.models import PointStruct, VectorParams, Distance
-from sqlalchemy import create_engine, text as sql_text
 import os
-import hashlib
 import time
+import uuid
 from rag.qwen_embeddings import get_qwen_embeddings
-from qdrant_client.http.models import Batch
 
 
 def chunk_text(text, chunk_size=512, overlap=64):
@@ -26,11 +24,13 @@ def chunk_text(text, chunk_size=512, overlap=64):
     return chunks
 
 
-def get_sha256_id(content):
+def get_deterministic_uuid(content, source_file):
     """
-    Generate a deterministic ID using SHA256 hash of content.
+    Generate a deterministic UUID5 based on content and source file.
     """
-    return hashlib.sha256(content.encode()).hexdigest()[:16]
+    namespace = uuid.uuid5(uuid.NAMESPACE_DNS, "robots2026.ai")
+    combined = f"{source_file}::{content}"
+    return str(uuid.uuid5(namespace, combined))
 
 
 def retry_with_backoff(func, *args, max_retries=3, base_delay=1, **kwargs):
@@ -42,15 +42,17 @@ def retry_with_backoff(func, *args, max_retries=3, base_delay=1, **kwargs):
             return func(*args, **kwargs)
         except Exception as e:
             if attempt == max_retries - 1:  # Last attempt
+                print(f"❌ Final attempt failed: {str(e)}")
                 raise e
             delay = base_delay * (2 ** attempt)  # Exponential backoff: 1s, 2s, 4s
             print(f"Attempt {attempt + 1} failed: {str(e)}. Retrying in {delay}s...")
             time.sleep(delay)
 
 
-def ingest_book(docs_dir="book/docs", collection="robots2026", chunk_size=512, overlap=64, id_strategy="sha256"):
+def ingest_book(docs_dir="book/docs", collection="robots2026", chunk_size=512, overlap=64):
     """
-    Ingest book content into Qdrant with Neon metadata storage.
+    Ingest book content into Qdrant with Qdrant as the single source of truth.
+    All metadata is stored in Qdrant payloads.
     """
     # Initialize Qdrant client with timeout
     qdrant = QdrantClient(
@@ -58,9 +60,6 @@ def ingest_book(docs_dir="book/docs", collection="robots2026", chunk_size=512, o
         api_key=os.getenv("QDRANT_API_KEY"),
         timeout=60
     )
-
-    # Initialize Neon DB
-    engine = create_engine(os.getenv("NEON_DATABASE_URL"), echo=False)
 
     # Create collection if it doesn't exist
     try:
@@ -75,73 +74,53 @@ def ingest_book(docs_dir="book/docs", collection="robots2026", chunk_size=512, o
         vectors_config=VectorParams(size=1536, distance=Distance.COSINE)
     )
 
-    # Create metadata table if it doesn't exist
-    try:
-        with engine.connect() as conn:
-            conn.execute(sql_text('''
-                CREATE TABLE IF NOT EXISTS rag_metadata (
-                    id SERIAL PRIMARY KEY,
-                    chunk_id TEXT NOT NULL,
-                    title TEXT,
-                    payload_text TEXT,
-                    created_at TIMESTAMP DEFAULT NOW()
-                )
-            '''))
-            conn.commit()
-    except Exception as e:
-        print(f"Warning: failed to create metadata table: {e}")
-
     # Process all markdown files
     book_path = Path(docs_dir)
     chapters = list(book_path.glob('**/*.md'))
 
-    points = []
-    for chapter in chapters:
-        print(f"Processing {chapter}...")
+    if not chapters:
+        print('❌ No chapters found to upload')
+        return
+
+    total_chunks = 0
+    total_chapters = len(chapters)
+
+    for chapter_idx, chapter in enumerate(chapters):
+        print(f"📖 Processing {chapter} ({chapter_idx + 1}/{total_chapters})...")
         payload_text = chapter.read_text(encoding='utf-8')
         text_chunks = chunk_text(payload_text, chunk_size, overlap)
 
+        points = []
         for chunk_idx, chunk in enumerate(text_chunks):
             # Generate embedding using Qwen
             embedding = get_qwen_embeddings(chunk)
 
-            # Generate ID based on strategy
-            if id_strategy == "sha256":
-                point_id = get_sha256_id(chunk)
-            else:
-                point_id = len(points)  # fallback to sequential
+            # Generate deterministic UUID (Qdrant-safe)
+            point_id = get_deterministic_uuid(chunk, str(chapter))
+
 
             points.append(PointStruct(
                 id=point_id,
                 vector=embedding,
                 payload={
-                    'chapter': str(chapter),
+                    'source_file': str(chapter),
                     'text': chunk,
                     'title': chapter.stem,
-                    'chunk_idx': chunk_idx
+                    'chunk_index': chunk_idx,
+                    'source_type': 'book_document'
                 }
             ))
 
-            # Save metadata to Neon DB
-            try:
-                with engine.connect() as conn:
-                    conn.execute(
-                        sql_text("INSERT INTO rag_metadata (chunk_id, title, payload_text) VALUES (:chunk_id, :title, :payload_text)"),
-                        [{"chunk_id": str(point_id), "title": chapter.stem, "payload_text": chunk}]
-                    )
-                    conn.commit()
-            except Exception as e:
-                print(f"Warning: failed to save metadata to Neon DB: {e}")
-
         # Upload vectors to Qdrant using batching
-    if points:
-        # Process points in batches of 32
-        batch_size = 32
-        for i in range(0, len(points), batch_size):
-            batch = points[i:i + batch_size]
-            retry_with_backoff(qdrant.upsert, collection_name=collection, points=batch)
-            print(f'✅ Uploaded batch {i//batch_size + 1} ({len(batch)} points) to Qdrant collection {collection}')
+        if points:
+            # Process points in batches of 32
+            batch_size = 32
+            for i in range(0, len(points), batch_size):
+                batch = points[i:i + batch_size]
+                retry_with_backoff(qdrant.upsert, collection_name=collection, points=batch)
+                print(f'📦 Uploaded batch {i//batch_size + 1} ({len(batch)} points) to Qdrant collection {collection}')
 
-        print(f'✅ Uploaded {len(points)} chunks from {len(chapters)} chapters to Qdrant collection {collection}')
-    else:
-        print('❌ No chapters found to upload')
+            total_chunks += len(points)
+            print(f'✅ Completed {chapter.stem}: {len(points)} chunks')
+
+    print(f'🎉 Successfully uploaded {total_chunks} chunks from {total_chapters} chapters to Qdrant collection {collection}')

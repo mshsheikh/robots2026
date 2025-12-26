@@ -32,11 +32,9 @@ def main():
         docs_dir="book/docs",
         collection="robots2026",
         chunk_size=512,
-        overlap=64,
-        id_strategy="sha256"
+        overlap=64
     )
     print("✅ Book content ingested into Qdrant / Neon")
-
     # Step 3: Update chat frontend to point to cloud backend
     print("🌐 Updating chat frontend to point to cloud backend...")
 

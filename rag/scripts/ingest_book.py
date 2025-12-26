@@ -4,7 +4,7 @@ from qdrant_client.http.models import PointStruct, VectorParams, Distance
 import os
 from rag.qwen_embeddings import get_qwen_embeddings
 import time
-from sqlalchemy import create_engine, text as sql_text
+import uuid
 from qdrant_client.http.models import Batch
 
 def chunk_text(text, chunk_size=1000):
@@ -28,6 +28,15 @@ def get_qwen_embedding(text):
     return get_qwen_embeddings(text)
 
 
+def get_deterministic_uuid(content, source_file):
+    """
+    Generate a deterministic UUID5 based on content and source file.
+    """
+    namespace = uuid.uuid5(uuid.NAMESPACE_DNS, "robots2026.ai")
+    combined = f"{source_file}::{content}"
+    return str(uuid.uuid5(namespace, combined))
+
+
 def retry_with_backoff(func, *args, max_retries=3, base_delay=1, **kwargs):
     """
     Execute a function with exponential backoff retry logic.
@@ -37,6 +46,7 @@ def retry_with_backoff(func, *args, max_retries=3, base_delay=1, **kwargs):
             return func(*args, **kwargs)
         except Exception as e:
             if attempt == max_retries - 1:  # Last attempt
+                print(f"❌ Final attempt failed: {str(e)}")
                 raise e
             delay = base_delay * (2 ** attempt)  # Exponential backoff: 1s, 2s, 4s
             print(f"Attempt {attempt + 1} failed: {str(e)}. Retrying in {delay}s...")
@@ -49,9 +59,6 @@ def main():
         api_key=os.getenv("QDRANT_API_KEY"),
         timeout=60
     )
-
-    # Neon DB (Postgres) connection
-    engine = create_engine(os.getenv("NEON_DATABASE_URL"), echo=False)
 
     # Check if collection exists, create if it doesn't
     collection_name = 'book_chunks'  # Use the same collection name as in main.py
@@ -72,59 +79,58 @@ def main():
     book_path = Path('book/docs')
     chapters = list(book_path.glob('**/*.md'))
 
-    points = []
-    point_id = 0
-    for chapter in chapters:
-        print(f"Processing {chapter}...")
+    if not chapters:
+        print('❌ No chapters found to upload')
+        return
+
+    total_chunks = 0
+    total_chapters = len(chapters)
+
+    for chapter_idx, chapter in enumerate(chapters):
+        print(f"📖 Processing {chapter} ({chapter_idx + 1}/{total_chapters})...")
         payload_text = chapter.read_text(encoding='utf-8')
 
         # Split text into chunks
         text_chunks = chunk_text(payload_text)
 
+        points = []
         for chunk_idx, chunk in enumerate(text_chunks):
             try:
                 # Generate embedding using Qwen
                 embedding = get_qwen_embedding(chunk)
 
+                # Generate deterministic UUID based on content and source
+                point_id = get_deterministic_uuid(chunk, str(chapter))
+
                 points.append(PointStruct(
                     id=point_id,
                     vector=embedding,
                     payload={
-                        'chapter': str(chapter),
+                        'source_file': str(chapter),
                         'text': chunk,  # Using 'text' to match the search expectation in main.py
                         'title': chapter.stem,
-                        'chunk_idx': chunk_idx
+                        'chunk_index': chunk_idx,
+                        'source_type': 'book_document'
                     }
                 ))
 
-                # Save metadata to Neon DB
-                try:
-                    with engine.connect() as conn:
-                        conn.execute(
-                            sql_text("INSERT INTO rag_metadata (chunk_id, title, payload_text) VALUES (:chunk_id, :title, :payload_text)"),
-                            [{"chunk_id": point_id, "title": chapter.stem, "payload_text": chunk}]
-                        )
-                        conn.commit()
-                except Exception as e:
-                    print(f"Warning: failed to save metadata to Neon DB: {e}")
-
-                point_id += 1
             except Exception as e:
-                print(f"Error processing chunk {chunk_idx} of {chapter}: {str(e)}")
+                print(f"❌ Error processing chunk {chunk_idx} of {chapter}: {str(e)}")
                 continue  # Skip this chunk and continue with the next one
 
-    # Upload vectors to Qdrant using batching
-    if points:
-        # Process points in batches of 32
-        batch_size = 32
-        for i in range(0, len(points), batch_size):
-            batch = points[i:i + batch_size]
-            retry_with_backoff(qdrant.upsert, collection_name=collection_name, points=batch)
-            print(f'✅ Uploaded batch {i//batch_size + 1} ({len(batch)} points) to Qdrant')
+        # Upload vectors to Qdrant using batching
+        if points:
+            # Process points in batches of 32
+            batch_size = 32
+            for i in range(0, len(points), batch_size):
+                batch = points[i:i + batch_size]
+                retry_with_backoff(qdrant.upsert, collection_name=collection_name, points=batch)
+                print(f'📦 Uploaded batch {i//batch_size + 1} ({len(batch)} points) to Qdrant')
 
-        print(f'✅ Uploaded {len(points)} chunks from {len(chapters)} chapters to Qdrant using Qwen embeddings')
-    else:
-        print('❌ No chapters found to upload')
+            total_chunks += len(points)
+            print(f'✅ Completed {chapter.stem}: {len(points)} chunks')
+
+    print(f'🎉 Successfully uploaded {total_chunks} chunks from {total_chapters} chapters to Qdrant using Qwen embeddings')
 
 if __name__ == "__main__":
     main()
