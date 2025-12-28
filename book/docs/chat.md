@@ -12,12 +12,7 @@ This page provides a live demo and detailed explanation of the AI chat system.
 
 ## Live Demo
 
-<iframe
-  src="/robots2026/chat/index.html"
-  width="100%"
-  height="600"
-  style={{ border: "1px solid #1e293b", borderRadius: "8px" }}
-/>
+The AI chat widget is now available globally across the site as a floating button at the bottom-right of your screen. Click the button to open the chat interface.
 
 > ⚠️ **Note:** For live answers, the backend must be running locally:
 > ```bash
@@ -32,8 +27,8 @@ This page provides a live demo and detailed explanation of the AI chat system.
 
 1. (0–10s) Open project landing page: `https://mshsheikh.github.io/robots2026/`
 2. (10–30s) Navigate to **Tools & Resources → AI Chat Assistant**
-3. (30–45s) Verify the UI loads; show the static chat box briefly
-4. (45–75s) Ask a single question, e.g., _"What are the main modules in the Physical AI course?"_
+3. (30–45s) Verify the UI loads; show the floating chat widget
+4. (45–75s) Click the chat widget and ask a single question, e.g., _"What are the main modules in the Physical AI course?"_
 5. (75–90s) Explain architecture quickly: "Retrieval → LLM → FastAPI → Frontend"
 6. Optional fallback if backend not running: explain what the answer would look like using local `rag` folder
 
@@ -45,36 +40,36 @@ This page provides a live demo and detailed explanation of the AI chat system.
 
 ### Architecture Overview
 
-- **Frontend:** Docusaurus page with embedded chat iframe  
-- **Chat Interface:** HTML/CSS/JS widget communicating via HTTP  
-- **Backend:** FastAPI RAG service  
-- **Vector DB:** Qdrant (stores document embeddings)  
-- **Embedding System:** Converts text into vectors (OpenAI-compatible)  
-- **Future:** Neon Postgres for conversation persistence  
+- **Frontend:** Docusaurus page with embedded React chat widget
+- **Chat Interface:** React component with floating button and toggle functionality
+- **Backend:** FastAPI RAG service
+- **Vector DB:** Qdrant (stores document embeddings)
+- **Embedding System:** Converts text into vectors (OpenAI-compatible)
+- **Future:** Neon Postgres for conversation persistence
 
 ### Retrieval-Augmented Generation (RAG) Flow
 
-1. User submits question → backend `/query` endpoint  
-2. Embedding generated for the question  
-3. Qdrant returns top-K relevant document chunks  
-4. Context assembled and sent to LLM (planned)  
-5. JSON results returned to frontend  
+1. User submits question → backend `/ask` endpoint
+2. Embedding generated for the question
+3. Qdrant returns top-K relevant document chunks
+4. Context assembled and sent to LLM (planned)
+5. JSON results returned to frontend
 
 ### Selected-Text Question Answering
 
-- Combines user question + selected text for more focused retrieval  
-- Returns results contextualized to user-selected passage  
+- Combines user question + selected text for more focused retrieval
+- Returns results contextualized to user-selected passage
 
 ### Local vs Live Deployment
 
-- **Local:** Full RAG functionality, including `/query` and `/query_selected` endpoints  
-- **GitHub Pages:** Embedded UI is visible, but live queries blocked due to mixed content policy  
+- **Local:** Full RAG functionality, including `/ask` and `/verify` endpoints
+- **GitHub Pages:** Embedded UI is visible, but live queries blocked due to mixed content policy
 
 ### Current Limitations & Future Improvements
 
-- Response generation not fully implemented  
-- Mixed content security limits live API calls  
-- Backend Qdrant service required for local queries  
+- Response generation not fully implemented
+- Mixed content security limits live API calls
+- Backend Qdrant service required for local queries
 - Planned: LLM integration, session persistence, improved retrieval strategies
 
 ---

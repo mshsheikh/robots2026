@@ -21,19 +21,19 @@ export default {
     "localeConfigs": {}
   },
   "customFields": {
-    "API_BASE": "robots2026.up.railway.app"
+    "API_BASE": "https://robots2026.up.railway.app"
   },
   "presets": [
     [
       "classic",
       {
         "docs": {
-          "sidebarPath": "/mnt/e/ai-humanoid-robotics/robots2026/book/sidebars.js",
+          "sidebarPath": "E:\\ai-humanoid-robotics\\robots2026\\book\\sidebars.js",
           "editUrl": "https://github.com/mshsheikh/ai-humanoid-robotics/tree/master/"
         },
         "blog": false,
         "theme": {
-          "customCss": "/mnt/e/ai-humanoid-robotics/robots2026/book/src/css/custom.css"
+          "customCss": "E:\\ai-humanoid-robotics\\robots2026\\book\\src\\css\\custom.css"
         }
       }
     ]

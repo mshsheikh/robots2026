@@ -118,22 +118,10 @@ async def ask_endpoint(request: QueryRequest):
 
 
 @app.get("/verify")
-async def verify_connections():
-    result = {"qdrant": None, "neon": None}
-    # Test Qdrant connection
-    try:
-        collections = qdrant_client.get_collections().collections
-        result["qdrant"] = {"status": "ok", "collections": [c.name for c in collections]}
-    except Exception as e:
-        result["qdrant"] = {"status": "error", "error": str(e)}
-    # Test Neon DB connection
-    try:
-        with engine.connect() as conn:
-            test = conn.execute(sql_text("SELECT 1")).fetchone()
-            if test and test[0] == 1:
-                result["neon"] = {"status": "ok"}
-            else:
-                result["neon"] = {"status": "error", "error": "Unexpected result"}
-    except Exception as e:
-        result["neon"] = {"status": "error", "error": str(e)}
-    return JSONResponse(result)
+async def verify():
+    """Lightweight health check endpoint with no external dependencies"""
+    return {
+        "status": "ok",
+        "service": "rag-backend",
+        "endpoints": ["/ask"]
+    }
