@@ -112,8 +112,11 @@ const ChatWidget: React.FC = () => {
       const data = await res.json();
       removeLoadingMessage();
 
-      if (data.results && data.results.length > 0) {
-        // Format the response from RAG results
+      if (data.answer && data.answer.trim()) {
+        // Use the clean answer from the backend
+        addMessage(data.answer, false);
+      } else if (data.results && data.results.length > 0) {
+        // Fallback to the old format if answer is not available
         const responseText = data.results.map((result: any, index: number) =>
           `${index + 1}. ${result.text} (Score: ${result.score})`
         ).join('\n\n');

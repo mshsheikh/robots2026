@@ -74,6 +74,7 @@ class Chunk(BaseModel):
 
 class QueryResponse(BaseModel):
     results: List[Chunk]
+    answer: str
 
 # ----------------------------
 # Retrieval Logic (FIXED)
@@ -114,7 +115,11 @@ def retrieve_chunks_from_qdrant(query: str, top_k: int) -> List[Chunk]:
 @app.post("/ask", response_model=QueryResponse)
 async def ask_endpoint(request: QueryRequest):
     results = retrieve_chunks_from_qdrant(request.effective_query, request.top_k)
-    return QueryResponse(results=results)
+
+    # Create a clean, summarized answer from the results
+    answer_text = "\n\n".join([result.text for result in results[:3]])
+
+    return QueryResponse(results=results, answer=answer_text)
 
 
 @app.get("/verify")
