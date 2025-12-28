@@ -1,0 +1,31 @@
+---
+id: 005
+title: phase-a-chat-ui-visibility-fix
+stage: phase-a
+date: 2025-12-15
+model: claude-sonnet
+feature: chat-ui
+branch: 005-phase-a-chat-ui-visibility-fix
+user: Salman
+command: sp.exec
+intent:
+  - Fix Docusaurus static build failure for /docs/chat
+  - Ensure Chat page is visible in sidebar on GitHub Pages
+  - Maintain Phase A scope (static UI + docs only)
+  - Preserve judge-safe narrative and demoability
+changes:
+  - Fixed MDX iframe syntax in book/docs/chat.md
+  - Updated book/sidebars.js to explicitly include chat page
+  - Organized sidebar with logical category structure
+constraints:
+  - No React, npm packages, or frameworks introduced
+  - No deployment or GitHub Actions changed
+  - No backend hosted publicly
+  - Uses MDX-safe syntax only
+  - All changes static-build compatible
+demo_notes:
+  - Chat page now visible in sidebar under 'Tools & Resources'
+  - Backend still requires local execution for demo
+  - MDX syntax validated for static build compatibility
+status: completed
+demo_ready: true

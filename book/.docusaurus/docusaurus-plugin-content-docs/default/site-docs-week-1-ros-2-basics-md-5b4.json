@@ -5,7 +5,7 @@
   "source": "@site/docs/week1-ros2-basics.md",
   "sourceDirName": ".",
   "slug": "/week1-ros2-basics",
-  "permalink": "/ai-humanoid-robotics/docs/week1-ros2-basics",
+  "permalink": "/robots2026/docs/week1-ros2-basics",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/mshsheikh/ai-humanoid-robotics/tree/master/docs/week1-ros2-basics.md",
@@ -18,10 +18,10 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Introduction to Physical AI & Humanoid Robotics",
-    "permalink": "/ai-humanoid-robotics/docs/intro"
+    "permalink": "/robots2026/docs/intro"
   },
   "next": {
     "title": "Week 2: Motion Planning Fundamentals",
-    "permalink": "/ai-humanoid-robotics/docs/week2-motion-planning"
+    "permalink": "/robots2026/docs/week2-motion-planning"
   }
 }

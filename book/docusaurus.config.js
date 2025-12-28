@@ -28,6 +28,10 @@ const config = {
     locales: ['en'],
   },
 
+  customFields: {
+    API_BASE: 'https://robots2026.up.railway.app', // Replace with your deployed FastAPI URL
+  },
+
   presets: [
     [
       'classic',
