@@ -28,18 +28,43 @@ const ChatWidget: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  // Initialize theme from system preference or localStorage
+  // Initialize theme from localStorage, data-theme attribute, or system preference
   useEffect(() => {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-    setTheme(initialTheme);
+    const dataTheme = document.body.getAttribute('data-theme') as 'light' | 'dark' | null;
+    const initialTheme = savedTheme || dataTheme || (prefersDark ? 'dark' : 'light');
+    setTheme(initialTheme as 'light' | 'dark');
     document.body.setAttribute('data-theme', initialTheme);
   }, []);
 
   // Update theme attribute when theme changes
   useEffect(() => {
     document.body.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  // Listen for global theme changes by observing body's data-theme attribute
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+          const newTheme = document.body.getAttribute('data-theme') as 'light' | 'dark' | null;
+          if (newTheme && newTheme !== theme) {
+            setTheme(newTheme);
+          }
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+
+    // Cleanup observer on component unmount
+    return () => {
+      observer.disconnect();
+    };
   }, [theme]);
 
   // Scroll to bottom when messages change

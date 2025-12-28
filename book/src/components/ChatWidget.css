@@ -3,8 +3,10 @@
   position: fixed;
   bottom: 80px;
   right: 20px;
-  width: 350px;
-  height: 500px;
+  width: min(90%, 400px);
+  height: min(70vh, 600px);
+  max-width: 400px;
+  max-height: 600px;
   background: var(--glass-bg, rgba(30, 41, 59, 0.8));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -16,6 +18,7 @@
   overflow: hidden;
   z-index: 1000;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: all 0.3s ease;
 }
 
 .chat-widget-container[data-theme="dark"] {
@@ -234,6 +237,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 1001;
   transition: all 0.3s ease;
+  animation: fadeInUp 0.4s ease-out;
 }
 
 .chat-widget-toggle:hover {
@@ -241,12 +245,43 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
+/* The existing hover styles for the theme toggle button are already properly defined */
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background: var(--bot-bg);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-widget-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Tablet responsiveness */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .chat-widget-container {
+    width: min(95%, 380px);
+    height: min(75vh, 550px);
+  }
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .chat-widget-container {
     width: calc(100vw - 30px);
-    height: calc(100vh - 120px);
-    bottom: 80px;
+    height: calc(60vh);
+    max-height: 500px;
+    bottom: 90px;
     right: 15px;
     left: 15px;
   }
@@ -269,6 +304,50 @@
     width: 50px;
     height: 50px;
     font-size: 1.2rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .chat-widget-container {
+    width: calc(100vw - 20px);
+    height: 50vh;
+    max-height: 400px;
+    bottom: 85px;
+    right: 10px;
+    left: 10px;
+  }
+
+  .chat-header {
+    padding: 12px;
+  }
+
+  .chat-title {
+    font-size: 0.9rem;
+  }
+
+  .messages {
+    padding: 12px;
+  }
+
+  .input-area {
+    padding: 12px;
+  }
+
+  #chat-input {
+    height: 60px;
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+
+  .send-button {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  .footer-note {
+    font-size: 0.6rem;
+    padding: 8px;
   }
 }
 
